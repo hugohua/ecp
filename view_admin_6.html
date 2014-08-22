@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ECD-任务管理系统</title>
+    <meta name="renderer" content="webkit">
+	<link rel="stylesheet" href="ui/css/ui_lib.css" media="screen" />
+	<link rel="stylesheet" href="css/admin.css" media="screen" />
+	<script src="js/libs/sea.js"></script>
+</head>
+<body>
+	<div class="ui">
+		<div class="ui_hd">
+			<div class="ui_logo">
+				<h1><a href="view_pm.html" title="ECD-任务管理系统"><span>etask</span><img src="img/logo.png" alt="ECD-Task" /></a></h1>
+			</div>
+
+			<div class="ui_help">
+				<a href="view_help_2.html" target="_blank">帮助中心</a>
+			</div>
+
+			<div class="ui_nav">
+				<ul class="clearfix">
+					<li><a target="_blank" href="view_search.html">需求搜索</a></li>
+                    <li><a target="_blank" href="view_admin_6.html">数据统计</a></li>
+				</ul>
+			</div>
+
+			<div class="ui_userinfo">
+				<a href="javascript:;" class="ui_userinfo_lk"><span id="js_user_photo" class="ui_userinfo_avatar"></span></a>
+				<div class="ui_userinfo_list">
+					<ul>
+						<li data-power="40"><a href="view_admin.html" target="_blank">后台管理</a></li>
+						<li data-power="40"><a href="view_pm.html" target="_blank">项目经理视图</a></li>
+						<li data-power="40"><a href="view_pdm.html" target="_blank">产品经理视图</a></li>
+						<li data-power="40"><a href="view_designer.html" target="_blank">设计师视图</a></li>
+						<li data-power="40|50"><a href="view_admin_4.html?power=50" target="_blank">财务视图</a></li>
+						<li><a id="js_logout" href="javascript:;">退出</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 需求概述 开始 -->
+		<div class="ui_bd">
+			<div class="ui_sidebar">
+				<div class="ui_subnav">
+					<dl>
+						<dt>后台管理</dt>
+						<dd>
+							<ul id="js_filter_state">
+								<li><a href="view_admin.html">访问权限</a></li>
+								<li><a href="view_admin_5.html">需求归类</a></li>
+								<li><a href="view_admin_3.html">需求类型</a></li>
+								<li><a href="view_admin_2.html">供应商维护</a></li>
+							</ul>
+						</dd>
+						<dt>数据统计</dt>
+						<dd>
+							<ul>
+								<li class="current"><a href="view_admin_6.html">统计概况</a></li>
+								<li><a href="view_admin_10.html">外包金额概况</a></li>
+								<li><a href="view_admin_8.html">业务线明细</a></li>
+								<li><a href="view_admin_7.html">外包明细</a></li>
+								<li><a href="view_admin_9.html">外包派驻明细</a></li>
+							</ul>
+						</dd>
+                        <dt>供应商报价</dt>
+                        <dd>
+                            <ul>
+                                <li><a href="view_admin_4.html">查看报价</a></li>
+                                <li><a href="view_admin_11.html">调整报价</a></li>
+                                <li><a href="view_admin_12.html">查看调整记录</a></li>
+                            </ul>
+                        </dd>
+					</dl>
+				</div>
+			</div>
+
+			<div class="ui_mainbar">
+				<div class="ui_page">
+					<div class="ui_page_hd">
+						<h3>数据统计 概况</h3>
+						<div class="ui_pickdate">
+                        	<input type="text" id="js_date_from" placeholder="年-月-日" /> - <input type="text" id="js_date_to" placeholder="年-月-日"  />
+						</div>
+                        <!-- <a href="javascript:;" title="导出的表格是 起始月份的数据" id="js_down_excel" class="btn_3 ui_top_action">导出统计数据</a> -->
+                        <select name="" id="js_stati_rank" class="ui_pickdate_action" style="width:135px;">
+                        </select>
+                        <script id="js_stati_rank_tpl" type="text/template">
+                        	<option value="0">全部业务线</option>
+                        	{{#rank}}
+							<option value="{{rank_id}}">{{rank_name}}</option>
+							{{/rank}}
+                        </script>
+
+                        <a href="javascript:;" title="确认" id="js_stati_btn" class="btn_3 ui_pickdate_action">确定</a>
+                        
+					</div>
+					<div class="ui_page_bd">
+
+						<div class="ecp_statistics">
+							<p class="ecp_statistics_desc">数据说明：概况页面金额仅不包含派驻设计师在内的。</p>
+							<div class="ecp_statistics_item">
+								<h4>需求类型占比</h4>
+								<div id="js_type_chart" class="ecp_statistics_grap"></div>
+								<div id="js_type_table" class="ecp_statistics_tab">
+								</div>
+								<script id="js_type_table_tpl" type="text/template">
+									{{#data}}
+									<table class="js_tablesorter">
+									<thead>
+										<tr>
+											<th scope="col">需求归类</th>
+											<th scope="col">金额</th>
+										</tr>
+										</thead>
+										<tbody>
+											{{#statistics}}
+											<tr>
+												<td>{{name}}</td>
+												<td data-price="{{price}}">&#65509;{{fmt_price}}</td>
+											</tr>
+											{{/statistics}}
+										</tbody>
+                                        <tfoot>
+                                        	<tr>
+												<td>总计</td>
+												<td>&#65509;{{fmt_total_price}}</td>
+											</tr>
+                                        </tfoot>
+									</table>
+									{{/data}}
+								</script>
+							</div>
+
+							<div class="ecp_statistics_item">
+								<h4>各业务费用占比</h4>
+								<div id="js_rank_chart" class="ecp_statistics_grap"></div>
+								<div id="js_rank_table" class="ecp_statistics_tab"></div>
+								<script id="js_rank_table_tpl" type="text/template">
+									{{#data}}
+									<table class="js_tablesorter">
+									<thead>
+										<tr>
+											<th scope="col">需求归类</th>
+											<th scope="col">平台金额</th>
+											<th scope="col">派驻金额</th>
+											<th scope="col">总金额</th>
+										</tr>
+										</thead>
+										<tbody>
+											{{#statistics}}
+											<tr>
+												<td>{{name}}</td>
+												<td>&#65509;{{fmt_price}}</td>
+												<td>&#65509;{{fmt_wai_price}}</td>
+												<td>&#65509;{{fmt_total_price}}</td>
+											</tr>
+											{{/statistics}}
+										</tbody>
+                                        <tfoot>
+                                        	<tr>
+												<td>总计</td>
+												<td>&#65509;{{fmt_total_ping_price}}</td>
+												<td>&#65509;{{fmt_total_wai_price}}</td>
+												<td>&#65509;{{fmt_total_all_price}}</td>
+											</tr>
+                                        </tfoot>
+									</table>
+									{{/data}}
+								</script>
+							</div>
+
+							<div class="ecp_statistics_item">
+								<h4>需求供应商占比</h4>
+								<div id="js_cp_chart" class="ecp_statistics_grap"></div>
+								<div id="js_cp_table" class="ecp_statistics_tab"></div>
+								<script id="js_cp_table_tpl" type="text/template">
+									{{#data}}
+									<table class="js_tablesorter">
+									<thead>
+										<tr>
+											<th scope="col">需求归类</th>
+											<th scope="col">金额</th>
+										</tr>
+										</thead>
+										<tbody>
+											{{#statistics}}
+											<tr>
+												<td>{{name}}</td>
+												<td data-price="{{price}}">&#65509;{{fmt_price}}</td>
+											</tr>
+											{{/statistics}}
+										</tbody>
+                                        <tfoot>
+                                        	<tr>
+												<td>总计</td>
+												<td>&#65509;{{fmt_total_price}}</td>
+											</tr>
+                                        </tfoot>
+									</table>
+									{{/data}}
+								</script>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 需求概述 结束 -->
+
+
+		<div class="ui_ft">
+			<p><span>copyright©<a href="http://ecd.tencent.com" target="_blank">ECD</a>.</span></p>
+		</div>
+	</div>
+</body>
+
+<script>
+	seajs.use('./js/ecp.main',function(main){
+		main.load('ecp.statistics.summary');
+	})
+</script>
+
+</html>

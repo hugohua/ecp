@@ -1,0 +1,3 @@
+UPDATE `tb_users` SET `login_name`='p_jdmhxie',`english_name`='p_jdmhxie',`user_email`='xieminghong@jd.com',`full_name`='p_jdmhxie(谢金红)' WHERE  `login_name` =  'alaxie';
+update tb_require set `require_creator` =  'p_jdmhxie' WHERE  `require_creator` LIKE  'alaxie';
+update tb_require_bak set `require_creator` =  'p_jdmhxie' WHERE  `require_creator` LIKE  'alaxie';

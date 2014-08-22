@@ -1,0 +1,22 @@
+不需要打分的需求 由于变更了类型 而打分了
+修复sql参考
+update tb_require set
+`require_mark_pdm` = 0,`require_mark_desgin` = 0,`require_mark_avg` = 0,`require_rating_pdm` = null ,`require_rating` = null
+WHERE require_state =3
+AND  `require_mark_pdm` !=0
+AND  `require_type_id` 
+IN ( 3, 4, 5, 6, 7, 8, 9, 23 ) 
+
+误删的需求从备份表中恢复，sql是
+insert into tb_require select * from tb_require_bak WHERE `require_id` = 10836
+
+
+
+update tb_require set `require_creator` =  'linayin' WHERE  `require_creator` LIKE  'dorahgu';
+update tb_require_bak set `require_creator` =  'linayin' WHERE  `require_creator` LIKE  'dorahgu'
+
+
+修改用户名
+UPDATE `tb_users` SET `login_name`='p_jdmhxie',`english_name`='p_jdmhxie',`user_email`='xieminghong@jd.com',`full_name`='p_jdmhxie(谢金红)' WHERE  `login_name` =  'alaxie';
+update tb_require set `require_creator` =  'p_jdmhxie' WHERE  `require_creator` LIKE  'alaxie';
+update tb_require_bak set `require_creator` =  'p_jdmhxie' WHERE  `require_creator` LIKE  'alaxie';

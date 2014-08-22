@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+	/*===== 系统基本界面 =====*/
+		.ui{overflow:hidden; position:absolute; left:0; top:0; right:0; bottom:0;}
+
+			.ui_hd{
+				position:absolute;
+				z-index:9;
+				left:0;
+				right:0;
+				height:65px;
+				background:#404040 url("../img/bg_header.png") repeat-x 0 0;
+			}
+
+			.ui_bd{
+				display:box;
+				display:-webkit-box;
+				display:-moz-box;
+				display:-ms-box;
+				position:absolute;
+				top:65px;
+				bottom:31px;
+				width:100%;
+				background-color:#FFF;
+				-webkit-transition:all 400ms ease;
+			}
+				.ui_sidebar{
+					border-right:1px solid #ECECEC;
+					background-color:#F7F6F5;
+				}
+				.ui_mainbar{
+					box-flex:1;
+					-ms-box-flex:1;
+					-moz-box-flex:1;
+					-webkit-box-flex:1;
+					position:relative;
+					height:100%;
+				}
+
+			.ui_ft{
+				position:absolute;
+				left:0;
+				bottom:0;
+				width:100%;
+				height:30px;
+				box-shadow:0 -2px 2px rgba(200,200,200,0.1);
+				border-top:1px solid #ECECEC;
+				background-color:#FFF;
+				text-align:center;
+				line-height:30px;
+			}

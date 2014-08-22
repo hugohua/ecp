@@ -1,0 +1,781 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ECD-任务管理系统</title>
+    <meta name="renderer" content="webkit">
+	<link rel="stylesheet" href="ui/css/ui_lib.css" media="screen" />
+	<link rel="stylesheet" href="css/ecp.css" media="screen" />
+	<script src="js/libs/sea.js"></script>
+</head>
+<body>
+	<div class="ui">
+		<div class="ui_hd">
+			<div class="ui_logo">
+				<h1><a href="view_pm.html" title="ECD-任务管理系统"><span>etask</span><img src="img/logo.png" alt="ECD-Task" /></a></h1>
+			</div>
+
+			<div class="ui_help">
+				<a href="view_help_2.html" target="_blank">帮助中心</a>
+			</div>
+
+			<div class="ui_userinfo">
+				<a href="javascript:;" class="ui_userinfo_lk"><span id="js_user_photo" class="ui_userinfo_avatar"></span></a>
+				<div class="ui_userinfo_list">
+					<ul>
+						<li data-power="40"><a href="view_admin.html" target="_blank">后台管理</a></li>
+						<li data-power="40"><a href="view_pm.html" target="_blank">项目经理视图</a></li>
+						<li data-power="40"><a href="view_pdm.html" target="_blank">产品经理视图</a></li>
+						<li data-power="40"><a href="view_designer.html" target="_blank">设计师视图</a></li>
+						<li data-power="40|50"><a href="view_admin_4.html?power=50" target="_blank">财务视图</a></li>
+						<li><a id="js_logout" href="javascript:;">退出</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="ui_bd">
+			<div class="ui_page ecp_search">
+				<div class="ecp_search_tab bg_1">
+                <form  id="js_form">
+					<table>
+						<tr>
+							<th>数字编号</th>
+							<td>
+								<input type="text" data-name="require_id" />
+							</td>
+							<th>需求名称</th>
+							<td>
+								<input type="text" data-name="require_name" />
+							</td>
+							<th>需求归类</th>
+							<td>
+                                <!--这里取消了自动拉取数据库数据，因为这里做了京东的归类，程序上没有去实现，所以手工调整了-->
+								<select id="js_search_rank_id" data-name="require_rank_id" data-trigger="js_search_rank_cate_id">
+									<option value>不限制</option>
+                                    <optgroup label="京东" class="bg_2">
+                                        <option value="3,12,13,14,15,16">全部京东业务</option>
+                                        <option value="3">微信手Q事业部</option>
+                                        <option value="12">POP</option>
+                                        <option value="13">市场中心</option>
+                                        <option value="14">拍拍(北京)</option>
+                                        <option value="15">闪购</option>
+                                        <option value="16">无线</option>
+                                    </optgroup>
+
+                                    <option value="1">易迅运营</option>
+                                    <option value="4">虚拟</option>
+                                    <option value="8">移动生活电商</option>
+                                    <option value="10">数字音乐</option>
+								</select>
+
+							</td>
+                            <th>需求归类细分</th>
+                            <td>
+                                <select id="js_search_rank_cate_id" data-name="require_rank_cate_id">
+                                    <option value>不限制</option>
+                                </select>
+                            </td>
+							<th>需求类型</th>
+							<td>
+								<select id="js_search_type_id" data-name="require_type_id">
+									<option value>不限制</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>创建人</th>
+							<td>
+								<input type="text" data-name="require_creator" />
+							</td>
+							<th>审核设计师</th>
+							<td>
+								<input id="js_require_verify_user" type="text" data-name="require_verify_user" />
+							</td>
+							<th>CP供应商</th>
+							<td>
+								<select id="js_search_cp_id" class="ecp_search_cpid" data-name="require_cp_id">
+									<option value>不限制</option>
+								</select>
+							</td>
+							<th>工作量</th>
+							<td>
+								<select data-name="require_workload">
+									<option value>不限制</option>
+									<option value="0.5">0.5 天</option>
+									<option value="1">1.0 天</option>
+									<option value="1.5">1.5 天</option>
+									<option value="2">2.0 天</option>
+									<option value="2.5">2.5 天</option>
+									<option value="3">3.0 天</option>
+									<option value="3.5">3.5 天</option>
+									<option value="4">4.0 天</option>
+									<option value="4.5">4.5 天</option>
+									<option value="5">5.0 天</option>
+								</select>
+							</td>
+                            <th>归档</th>
+                            <td>
+                                <select data-name="require_rating">
+                                    <option value>不限制</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
+                            </td>
+						</tr>
+						<tr>
+							<th>需求状态</th>
+							<td>
+								<select data-name="require_state">
+									<option value>不限制</option>
+									<option value="1">待排期</option>
+									<option value="5">待邮件</option>
+									<option value="9">待启动</option>
+									<option value="4">进行中</option>
+									<option value="7">待评分</option>
+									<option value="8">--产品待评分</option>
+									<option value="15">--设计师待评分</option>
+									<option value="17">已完成</option>
+									<option value="3">--已打分</option>
+									<option value="11">--待结算</option>
+									<option value="12">--已结算</option>
+								</select>
+							</td>
+							<th>是否临时需求</th>
+							<td>
+								<select data-name="require_type">
+									<option value>不限制</option>
+									<option value="1">正常需求</option>
+                                    <option value="2">提前需求</option>
+									<option value="0">临时需求</option>
+								</select>
+							</td>
+							<th>是否修改数量</th>
+							<td>
+								<select data-name="is_modify_attr">
+									<option value>不限制</option>
+									<option value="1">没有修改</option>
+									<option value="0">有修改</option>
+								</select>
+							</td>
+							<th>是否调整价格</th>
+							<td>
+								<select data-name="require_pm_cost">
+									<option value>不限制</option>
+									<option value="0">没有调整</option>
+									<option value="1">有调整</option>
+								</select>
+							</td>
+                            <th>是否驳回</th>
+                            <td>
+                                <select data-name="is_turn_require">
+                                    <option value>不限制</option>
+                                    <option value="1">没有被驳回过</option>
+                                    <option value="0">曾经被驳回过</option>
+                                </select>
+                            </td>
+						</tr>
+						<tr>
+							<th>开始时间</th>
+							<td><input id="js_date_from" type="text" data-name="require_start_date" /></td>
+							<th>结束时间</th>
+							<td><input id="js_date_to" type="text" data-name="require_finish_date" /></td>
+                            <th></th>
+                            <td></td>
+                            <th></th>
+                            <td></td>
+                            <th></th>
+                            <td></td>
+						</tr>
+						<tr>
+							<td colspan="10">
+								<div class="ecp_search_btns">
+									<button type="submit" class="btn_1">搜索</button>
+									<button type="reset" id="js_reset_btn" class="btn_2">重置</button>
+								</div>
+							</td>
+						</tr>
+					</table>
+                    </form>
+					<!-- excel start -->
+					<div class="excel_control">
+						<button type="button" id="js_excel_btn" class="btn_3">导出Excel</button>
+						<label class="tag_3"><input type="radio" name="group_ex" value="0" checked="checked" /><span>不分组</span></label>
+						<label class="tag_3"><input type="radio" name="group_ex" value="1" /><span>按需求归类分组</span></label>
+						<label class="tag_3"><input type="radio" name="group_ex" value="2" /><span>按CP分组</span></label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label class="tag_3"><input type="radio" name="group_pf" value="1" checked="checked" /><span>显示评分</span></label>
+						<label class="tag_3"><input type="radio" name="group_pf" value="0" /><span>不显示评分</span></label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label class="tag_3"><input type="radio" name="group_zip" value="0" checked="checked" /><span>不下载设计稿</span></label>
+						<label class="tag_3"><input type="radio" name="group_zip" value="1" /><span>下载设计稿</span></label>
+                        <span style="float:right;">
+                        <a href="api/check_price.php" id="js_check_price" target="_blank"  class="btn_3">检测</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="api/check/design/:start/:end" data-api="api/check/design/" id="js_check_design" target="_blank"  class="btn_3">清理多余设计稿</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="view_rtx.html" id="js_rtx_link" target="_blank"  class="btn_3">发送RTX</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" id="js_pay_btn" class="btn_3">导出财务模板</button>
+                        </span>
+					</div>
+					<!-- excel end -->
+				</div>
+
+				<div id="js_container" class="ecp_search_con" style="display:none">
+					<p class="ecp_search_result">
+                    	搜索结果：<span id="js_total" class="c_tx2"></span>
+                    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        价格总数：<span id="js_total_price" class="c_tx2"></span>
+                        </p>
+					<div id="js_ui_tables">
+						<table class="task_tab_list js_tablesorter">
+							<thead>
+								<tr>
+									<th style="">编号</th>
+									<th style="width:15%">需求名称</th>
+									<th style="">CP供应商</th>
+									<th style="">需求归类</th>
+									<th style="">需求类型</th>
+                                    <th style="">创建时间</th>
+                                    <th style="">开始时间</th>
+									<th style="">工作量</th>
+									<th style="">创建者</th>
+									<th style="">审核设计师</th>
+									<th style="">价格</th>
+									<th style="">产品评分</th>
+                                    <th style="">设计师评分</th>
+                                    <th style="">平均分</th>
+                                    <th style="">归档</th>
+									<th style="">状态</th>
+									<th style="">属性</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div> <!-- js_ui_tables -->
+					<script id="js_table_tmpl" type="text/template">
+						{{#require}}
+						<tr class="tr_state_{{require_state}}" data-id="{{require_id}}" data-require-type="{{require_type}}">
+							<td>{{rank_short}}{{require_id}}</td>
+							<td>
+								{{#url}}
+								<a class="js_p_require_name" href="{{url}}" target="_blank">{{require_name}}</a>
+								{{/url}}
+								{{^url}}
+								<span class="js_p_require_name">{{require_name}}</span>
+								{{/url}}
+							</td>
+							<td>{{cp_name}}</td>
+							<td>{{rank_name}}</td>
+							<td>{{type_name}}</td>
+                            <td>{{require_add_time}}</td>
+							<td>{{require_start_date}}</td>
+							<td>{{require_workload}}</td>
+							<td class="js_p_require_creator">{{require_creator}}</td>
+							<td>{{desgin_verify_user}}</td>
+							<td><span class="js_m_fcost" data-base="{{require_base_cost}}" data-cost="{{require_pm_cost}}" data-cost-change="{{require_pm_cost_change}}">{{require_final_cost}}</span></td>
+							<td>
+							
+							{{#require_mark_pdm_0}}
+							-
+							{{/require_mark_pdm_0}}
+
+							{{^require_mark_pdm_0}}
+							
+							<span style="display:none" class="js_m_pdm">{{require_mark_pdm}}</span>
+							<select class="js_mark_change" data-old-val="{{require_mark_pdm}}" data-mark="{{require_mark_desgin}}" data-name="require_mark_pdm">
+								<option value="">请选择</option>
+								<optgroup label="优" class="bg_2">
+									<option value="100">100</option>
+									<option value="95">95</option>
+									<option value="90">90</option>
+									<option value="85">85</option>
+								</optgroup>
+								<optgroup label="中" class="bg_2">
+									<option value="80">80</option>
+									<option value="75">75</option>
+									<option value="70">70</option>
+									<option value="65">65</option>
+									<option value="60">60</option>
+								</optgroup>
+								<optgroup label="差" class="bg_2">
+									<option value="55">55</option>
+									<option value="50">50</option>
+									<option value="5">5</option>
+								</optgroup>
+							</select>
+							
+							{{/require_mark_pdm_0}}
+							
+							</td>
+							<td>
+							{{#require_mark_desgin_0}}
+								-
+								{{/require_mark_desgin_0}}
+								{{^require_mark_desgin_0}}
+								<span class="js_m_desgin" style="display:none">{{require_mark_desgin}}</span>
+							<select class="js_mark_change" data-old-val="{{require_mark_desgin}}" data-mark="{{require_mark_pdm}}" data-name="require_mark_desgin">
+								<option value="">请选择</option>
+								<optgroup label="优" class="bg_2">
+									<option value="100">100</option>
+									<option value="95">95</option>
+									<option value="90">90</option>
+									<option value="85">85</option>
+								</optgroup>
+								<optgroup label="中" class="bg_2">
+									<option value="80">80</option>
+									<option value="75">75</option>
+									<option value="70">70</option>
+									<option value="65">65</option>
+									<option value="60">60</option>
+								</optgroup>
+								<optgroup label="差" class="bg_2">
+									<option value="55">55</option>
+									<option value="50">50</option>
+									<option value="5">5</option>
+								</optgroup>
+							</select>
+								{{/require_mark_desgin_0}}
+							
+							</td>
+							<td>
+							{{#require_mark_avg_0}}
+							-
+							{{/require_mark_avg_0}}
+							{{^require_mark_avg_0}}
+							<span class="js_m_avg">{{require_mark_avg}}</span>
+							{{/require_mark_avg_0}}
+							</td>
+							<td>
+							{{#require_rating_pdm}}
+							<span class="js_m_rating_pdm" title="原始归档">{{require_rating_pdm}}</span>
+							{{/require_rating_pdm}}
+
+							{{#require_rating}}
+							<span class="js_m_rating" title="最终归档">{{require_rating}}</span>
+							{{/require_rating}}
+							</td>
+							<!--<td class="js_rating">{{require_rating}}</td>-->
+							<td class="js_search_state">{{state_name}}</td>
+							<td>
+                                {{#require_type_state_0}}
+                                <span class="tag_2" title="临时需求">临</span>
+                                {{/require_type_state_0}}
+
+                                {{#require_type_state_2}}
+                                <span class="tag_2" title="提">提</span>
+                                {{/require_type_state_2}}
+								
+								{{#require_modify_attr_0}}
+								<span class="tag_1" title="需求内容有修改">改</span>
+								{{/require_modify_attr_0}}
+								
+								{{^require_change_0}}
+								<span class="tag_3" title="价格有做调整">调</span>
+								{{/require_change_0}}
+								
+							</td>
+						</tr>
+						{{/require}}
+						{{^require}}
+						<tr>
+							<td colspan="16">该筛选条件没有相关数据，你可以[重新搜索]试试</td>
+						</tr>
+						{{/require}}
+					</script>
+				</div>
+
+				<!-- 右侧弹出层 S -->
+				<div class="pop_task" id="js_pop_task">
+                
+                	<table class="ui_tab bg_1">
+						<tr>
+							<th>需求状态：</th>
+							<td>
+                            <select id="js_change_state">
+                                <option value="1">待排期</option>
+                                <option value="5">待邮件</option>
+                                <option value="9">待启动</option>
+                                <option value="4">待评分</option>
+                                <option value="3">已打分</option>
+                                <option value="11">待结算</option>
+                                <option value="12">已结算</option>
+                            </select>
+                            </td>
+						</tr>
+						
+						<tr>
+							<th></th>
+							<td>
+								<button type="button" id="js_change_done" class="btn_1">确认修改</button>
+                                <button type="button" id="js_change_del" class="btn_2">删除该需求</button>
+							</td>
+						</tr>
+					</table>
+                    
+                    <table class="ui_tab bg_1">
+						<tr>
+							<th>修复需求</th>
+							<td>
+								<button type="button" id="js_chear_fen" class="btn_1">清除需求评分</button>
+								<a href="view_edit.html" id="js_edit_all" target="_blan" class="btn_1">进入全局修改</a>
+							</td>
+						</tr>
+					</table>
+					
+					<table id="js_req_mark" class="ui_tab bg_1">
+						<tr>
+							<th>基础价格：</th>
+							<td><span id="js_pop_require_base_cost"></span></td>
+						</tr>
+						<tr>
+							<th>调整价格：</th>
+							<td>
+								<select id="js_pop_require_pm_cost_change" class="sel_2 sel_mini">
+									<option value="1">+</option>
+									<option value="0">-</option>
+								</select>
+								<input type="text" id="js_pop_require_pm_cost" />
+							</td>
+						</tr>
+						<tr>
+							<th>最终价格：</th>
+							<td><input type="number" id="js_require_final_cost" /></td>
+						</tr>
+						<tr>
+							<th>调整说明：</th>
+							<td><textarea id="js_pop_require_cost_comment"></textarea></td>
+						</tr>
+						<tr>
+							<th></th>
+							<td>
+								<button id="js_confirm_save_price_btn" type="button" class="btn_1">保存</button>
+								<button id="js_confirm_price_btn" type="button" class="btn_1">确认结算</button>
+							</td>
+						</tr>
+					</table>
+					
+					<!-- state_1 待排期 显示输入框 其他状态显示文本 -->
+					<!-- state_3 已完成状态 显示 state_3 的内容，否则隐藏 -->
+					<input id="js_pop_require_id" type="hidden" />
+                    <!-- 用于修改需求状态 -->
+                    <input id="js_pop_require_state" type="hidden" />
+					<input id="js_pop_cp_id" type="hidden" />
+					<table id="js_form_pop" class="ui_tab">
+                    	<tr>
+                            <th>编号：</th>
+                            <td><div id="js_pop_req_id"></div></td>
+                        </tr>
+                        <tr>
+                            <th>创建者：</th>
+                            <td><div id="js_pop_creater"></div></td>
+                        </tr>
+                        
+						<tr id="js_pop_require_name" class="state_1">
+							<th>需求名称：</th>
+							<td>
+								<span></span>
+								<input type="text" data-validate />
+							</td>
+						</tr>
+						
+						<tr id="js_pop_require_type_id" class="state_1">
+							<th>需求类型：</th>
+							<td>
+								<span></span>
+								<strong style="font-weight:400"></strong>
+								<div class="pop_tapd_type">
+									<select></select>
+									<input type="text" id="js_pop_require_ads" style="display:none; right:9px;" placeholder="数量" />
+								</div>
+							</td>
+						</tr>
+						
+                        <tr id="js_pop_require_rank_id" class="state_1">
+                            <th>需求归类：</th>
+                            <td>
+                                <span></span>
+                                <select data-validate data-trigger="js_pop_require_rank_cate_id_select"></select>
+                            </td>
+                        </tr>
+
+                        <tr id="js_pop_require_rank_cate_id" class="state_1">
+                            <th>需求归类细分：</th>
+                            <td>
+                                <span></span>
+                                <select id="js_pop_require_rank_cate_id_select" data-validate></select>
+                            </td>
+                        </tr>
+
+						<tr id="js_pop_require_cp_id" class="state_1">
+							<th>CP供应商：</th>
+							<td>
+								<span></span>
+								<select data-validate></select>
+							</td>
+						</tr>
+						
+						<tr id="js_pop_require_verify_user" class="state_1 js_verify_user">
+							<th>审核设计师：</th>
+							<td>
+								<span></span>
+								<input type="text" id="js_require_verify_user2" />
+							</td>
+						</tr>
+						
+						<!--<tr id="js_pop_require_ads" class="state_1">
+							<th>配套广告数量：</th>
+							<td>
+								<span></span>
+								<input type="number" />
+							</td>
+						</tr>-->
+
+						<tr id="js_pop_attribute" class="bg_2">
+							<th>需求配套：</th>
+							<td>
+								<div id="js_pop_attribute_t_1" class="task_set_list"></div>
+								<script id="js_pop_attribute_t_tmpl" type="text/template">
+									{{#attribute}}
+									<p><span>配置 {{type_name}}：</span><span>{{att_text}}</span></p>
+									{{/attribute}}
+								</script>
+								
+								<div class="task_set">
+									<div id="js_pop_attribute_v_1"></div>
+									<button id="js_add_attr_btn" type="button" class="btn_2">增加配套类型</button>
+								</div>
+								
+
+								<!-- 用于新增一个数据 -->
+								<div id="js_pop_att_clone" data-type="insert" style="display:none;">
+									<p class="js_row ui_row" data-type="insert">
+										<select id="js_type_select" class="js_attr_type_id"></select>
+										<input class="js_att_text" type="number" />
+										<button type="button" class="ico_del js_del">删除</button>
+									</p>
+								</div>
+							</td>
+						</tr>
+
+						<tr id="js_pop_require_start_date" class="state_1">
+							<th>需求时间：</th>
+							<td>
+								<span></span>
+								<input type="text" data-validate />
+							</td>
+						</tr>
+						
+						<tr id="js_pop_require_workload" class="state_1">
+							<th>工作量：</th>
+							<td>
+							<span></span>
+							<select data-validate>
+								<option value="0.5">0.5 天</option>
+								<option value="1">1.0 天</option>
+								<option value="1.5">1.5 天</option>
+								<option value="2">2.0 天</option>
+								<option value="2.5">2.5 天</option>
+								<option value="3">3.0 天</option>
+								<option value="3.5">3.5 天</option>
+								<option value="4">4.0 天</option>
+								<option value="4.5">4.5 天</option>
+								<option value="5">5.0 天</option>
+							</select>
+							</td>
+						</tr>
+						
+						<tr id="js_pop_require_type" class="state_1">
+							<th>是否临时需求：</th>
+                            <td>
+                                <span></span>
+                                <select>
+                                    <option value="1">正常需求</option>
+                                    <option value="2">提前需求</option>
+                                    <option value="0">临时需求</option>
+                                </select>
+                            </td>
+						</tr>
+						
+						<tr id="js_pop_require_pdm_comment" class="state_1 state_3">
+							<th>产品经理评语：</th>
+							<td><span></span></td>
+						</tr>
+						
+						<!--<tr id="js_pop_require_mark_desgin" class="state_1 state_3">
+							<th>设计师评分：</th>
+							<td><span class="tag_1"></span><input type="text" /></td>
+						</tr>-->
+						
+						<tr id="js_pop_require_desgin_comment" class="state_1 state_3">
+							<th>设计师评语：</th>
+							<td><span></span></td>
+						</tr>
+						
+						<!--<tr id="js_pop_require_mark_avg" class="state_3">
+							<th>平均分：</th>
+							<td><span class="tag_1"></span></td>
+						</tr>
+						
+						 <tr id="js_pop_require_rating" class="state_3">
+							<th>评级：</th>
+							<td><span class="tag_1"></span></td>
+						</tr>-->
+						
+						<tr id="js_pop_require_demand" class="state_1">
+							<th>设计要求：</th>
+							<td>
+								<span></span>
+								<textarea></textarea>
+							</td>
+						</tr>
+						<!--<tr id="js_pop_require_attachment" class="state_1">
+							<th>需求附件：</th>
+							<td>
+								<ul id="js_att_list_1" class="att_list clearfix">
+								</ul>
+								<script id="js_att_tmpl_1" type="text/template">
+								{{#attachment}}
+								<li data-filename="{{filename}}" data-filedesc="{{filedesc}}">
+									{{#width}}
+									<a href="attachment/att.php?file={{filename}}">{{filedesc}}</a>
+									{{/width}}
+									{{^width}}
+									<a href="attachment/{{filename}}">{{filedesc}}</a>
+									{{/width}}
+								</li>
+								{{/attachment}}
+								</script>
+							</td>
+						</tr>-->
+						 <tr id="js_pop_upload_container">
+							<th>设计稿附件：</th>
+							<td>
+								<ul id="js_att_list_2" class="att_list clearfix" style="clear:both;">
+								</ul>	
+								 <script id="js_att_tmpl_2" type="text/template">
+									{{#attachment}}
+									<li data-type="{{type}}" data-filename="{{filename}}" data-filedesc="{{filedesc}}">
+										{{#type_image}}
+										<a href="{{url}}" target="_blank" title="点击查看该设计稿"><img src="{{url}}" /></a>
+										{{/type_image}}
+										
+										{{#type_swf}}
+										<a href="view_file.php?url={{url}}" target="_blank" title="点击查看文件"><img src="img/swf.png" /></a>
+										{{/type_swf}}
+			
+										{{#type_pdf}}
+										<a href="view_file.php?url={{url}}" title="点击查看文件"><img src="img/pdf.png" /></a>
+										{{/type_pdf}}
+										
+										{{#type_rar}}
+										<a href="{{url}}" download="{{filename}}" title="点击查看文件"><img src="img/rar.png" /></a>
+										{{/type_rar}}
+										{{#type_7z}}
+										<a href="{{url}}" download="{{filename}}" title="点击查看文件"><img src="img/rar.png" /></a>
+										{{/type_7z}}
+										{{#type_zip}}
+										<a href="{{url}}" download="{{filename}}" title="点击查看文件"><img src="img/rar.png" /></a>
+										{{/type_zip}}
+									</li>
+									{{/attachment}}
+								</script>
+							</td>
+						</tr>
+						<tr id="js_edit_req_btn">
+							<td colspan="2" style="text-align:center">
+								<div id="js_state_3">
+									<button id="js_save_price_btn" type="button" class="btn_1">保存</button>
+									<button id="js_pass_btn" type="button" class="btn_1">审核通过</button>
+									<button id="js_turn_down_btn" type="button" class="btn_2">驳回</button>
+								</div>
+								<div id="js_state_4">
+									<button type="button" class="btn_1 js_save">保存</button>
+									<button type="button" class="btn_2 js_del">删除</button>
+									<button type="button" class="btn_2 js_abort">中止</button>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<a href="javascript:;" class="pop_task_close js_pop_task_close">关闭</a>
+				</div>
+				<!-- 右侧弹出层 E -->
+
+			</div>
+		</div>
+
+
+		<div class="ui_ft">
+			<p><span>copyright©<a href="http://ecd.tencent.com" target="_blank">ECD</a>.</span></p>
+		</div>
+	</div>
+	
+    <!-- 审核设计师/前端 -->
+	<div id="js_rank_check" class="autofinish">
+		<div class="autofinish_inner clearfix">
+			<div class="autofinish_item">
+				<h3>审核设计师</h3>
+				<ul class="js_desgin">
+					
+				</ul>
+			</div>
+			<div class="autofinish_item">
+				<h3>审核前端</h3>
+				<ul class="js_wb">
+					
+				</ul>
+			</div>
+		</div>
+		<div id="js_rank_btn" class="autofinish_control">
+			<button class="btn_1" type="button">确认</button>
+		</div>
+	</div>
+
+    <select name="js_bd_rank_cate" id="js_bd_rank_cate" style="display: none"></select>
+</body>
+
+<script id="js_cp_tmpl" type="text/template">
+<optgroup label="平台外包" class="bg_2">
+	<option id="js_ping_all" value="">全部平台CP</option>
+	{{#cp}}
+	<option value="{{cp_id}}" data-type="{{cp_type}}">{{cp_name}}</option>
+	{{/cp}}
+</optgroup>
+
+<optgroup id="js_waipai" label="外包派驻" class="bg_2">
+	<option id="js_waipai_all">全部外包派驻</option>
+</optgroup>
+</script>
+
+<script id="js_type_tmpl" type="text/template">
+	{{#type}}
+	<option value="{{type_id}}" data-show-num="{{type_show_num}}" data-check="{{type_check}}">{{type_name}}</option>
+	{{/type}}
+</script>
+
+<script id="js_type_tmpl_2" type="text/template">
+	{{#type}}
+	<option value="{{type_id}}" data-show-num="{{type_show_num}}" data-check="{{type_check}}">配套 {{type_name}}</option>
+	{{/type}}
+</script>
+
+<script id="js_rank_tmpl" type="text/template">
+	{{#rank}}
+	<option value="{{rank_id}}">{{rank_name}}</option>
+	{{/rank}}
+</script>
+
+<script id="js_rankcate_tmpl" type="text/template">
+    {{#rankcate}}
+    <option class="trigger" value="{{rank_cate_id}}" data-rank_id="{{rank_id}}">{{rank_cate_name}}</option>
+    {{/rankcate}}
+</script>
+
+
+<script>
+	seajs.use('./js/ecp.main',function(main){
+		main.load('ecp.search');
+	})
+</script>
+</html>

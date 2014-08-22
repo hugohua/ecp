@@ -1,0 +1,1 @@
+2014-08-15 13:29:38 - INFO  --> (p_jdyghua)  update user name anluqian success. msg = user_name:anluqian 

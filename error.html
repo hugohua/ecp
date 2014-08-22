@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ECD-任务管理系统</title>
+    <meta name="renderer" content="webkit">
+	<link rel="stylesheet" href="ui/css/ui_lib.css" media="screen" />
+	<link rel="stylesheet" href="css/error.css" media="screen" />
+    <script src="js/libs/sea.js"></script>
+</head>
+<body>
+	<div class="ui">
+		<div class="ui_hd">
+			<div class="ui_logo">
+				<h1><a href="view_pdm.html" title="ECD-任务管理系统"><span>etask</span><img src="img/logo.png" alt="ECD-Task" /></a></h1>
+			</div>
+		</div>
+
+		<div class="ui_bd">
+			<div class="ui_error">
+				<p>很抱歉，该系统需要申请权限才可以进行访问</p><br /><br />
+                <p>请联系【p_jdmhxie(谢明红)&nbsp;&nbsp;电话:153-3880-5008&nbsp;&nbsp;QQ:275576816&nbsp;&nbsp; 或 p_jdddyin(尹丁丁)&nbsp;&nbsp; QQ:2259998232】开通权限</p>
+                <p>技术支持：p_jdyghua(华宇果)</p>
+                <br />
+				<p>权限开通后，请<a href="index.php">点击此处登录</a></p>
+
+                <br /><br />
+                <a href="javascript:;" class="btn_3" id="J_clear">切换P账户后，导致无权限登录，请点击此处修复</a>
+			</div>
+		</div>
+
+		<div class="ui_ft">
+			<p><span>copyright©<a href="http://ecd.tencent.com" target="_blank">ECD</a>.</span></p>
+		</div>
+	</div>
+    <script>
+        seajs.use('./js/ecp.main',function(main){
+            main.load('ecp.error');
+        })
+    </script>
+</body>
+</html>

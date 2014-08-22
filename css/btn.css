@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+	/*===== 按钮 =====*/
+		.btn_1,
+		.btn_2,
+		.btn_3{
+			overflow:hidden;
+			display:inline-block;
+			padding:0 20px;
+			height:31px;
+			border-radius:2px;
+			line-height:31px;
+			vertical-align:middle;
+		}
+
+		.btn_1:hover,
+		.btn_2:hover,
+		.btn_3:hover{text-decoration:none;}
+		.btn_1:hover{border-color:#347CC4;}
+		.btn_2:hover{border-color:#B9B9B9;}
+		.btn_3:hover{border-color:#34466F;}
+
+		.btn_1{
+			border:1px solid #4C92D7;
+			background:-webkit-linear-gradient(top, #72baed 0%,#58a5e7 100%);
+			background:-moz-linear-gradient(top, #72baed 0%,#58a5e7 100%);
+			color:#FFF;
+		}
+
+		.btn_2{
+			border:1px solid #D7DAE5;
+			background:-webkit-linear-gradient(top, #FFF 0%,#FFF 80%,#f4f4f6 100%);
+			background:-moz-linear-gradient(top, #FFF 0%,#FFF 80%,#f4f4f6 100%);
+			color:#555;
+		}
+
+		.btn_3{
+			background-color:#EE4272;
+			box-shadow:0 2px 2px rgba(200,200,200,0.8);
+			color:#FFF;
+		}
+
+		.btn_big{padding:0 40px; height:36px; line-height:36px;}
+		.btn_mini{padding:0 5px; height:20px; line-height:20px;}

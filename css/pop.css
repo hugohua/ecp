@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+		/*===== 弹出层 =====*/
+			.ui_pop{
+				display:none;
+				overflow:hidden;
+				position:absolute;
+				z-index:999;
+				left:50%;
+				top:50%;
+				box-shadow:0 0 10px rgba(0,0,0,0.4);
+				background-color:#FFF;
+			}
+			
+			.ui_pop_hd{padding:10px;}
+			.ui_pop_tit{font-size:12px; font-weight:normal; text-align:center; color:#000;}
+			.ui_pop_close{overflow:hidden; position:absolute; right:0; top:5px; width:30px; height:20px; background:url("../img/btn_close.png") no-repeat 10px 0; text-indent:-999px;}
+			.ui_pop_close:hover{background-color:#CDE6F7; background-position:10px -20px;}
+
+
+			.ui_pop_bd{overflow:auto; padding-top:20px;}
+			.ui_pop_con{padding:0 20px;}
+
+			.ui_pop_ft{padding:15px 0; text-align:center;}
+				.ui_pop_ft .btn_1,
+				.ui_pop_ft .btn_2{display:inline-block; margin:0 10px;}
+
+			.ui_mask{
+				display:none;
+				position:absolute;
+				z-index:998;
+				left:0;
+				right:0;
+				top:0;
+				bottom:0;
+				background-color:rgba(0,0,0,0.6);
+			}

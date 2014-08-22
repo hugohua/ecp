@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ECD-任务管理系统</title>
+    <meta name="renderer" content="webkit">
+	<link rel="stylesheet" href="ui/css/ui_lib.css" media="screen" />
+	<link rel="stylesheet" href="css/admin.css" media="screen" />
+	<script src="js/libs/sea.js"></script>
+</head>
+<body>
+	<div class="ui">
+		<div class="ui_hd">
+			<div class="ui_logo">
+				<h1><a href="view_pm.html" title="ECD-任务管理系统"><span>etask</span><img src="img/logo.png" alt="ECD-Task" /></a></h1>
+			</div>
+
+			<div class="ui_help">
+				<a href="view_help_2.html" target="_blank">帮助中心</a>
+			</div>
+
+			<div class="ui_nav">
+				<ul class="clearfix">
+					<li><a target="_blank" href="view_search.html">需求搜索</a></li>
+                    <li><a target="_blank" href="view_admin_6.html">数据统计</a></li>
+				</ul>
+			</div>
+
+			<div class="ui_userinfo">
+				<a href="javascript:;" class="ui_userinfo_lk"><span id="js_user_photo" class="ui_userinfo_avatar"></span></a>
+				<div class="ui_userinfo_list">
+					<ul>
+						<li data-power="40"><a href="view_admin.html" target="_blank">后台管理</a></li>
+						<li data-power="40"><a href="view_pm.html" target="_blank">项目经理视图</a></li>
+						<li data-power="40"><a href="view_pdm.html" target="_blank">产品经理视图</a></li>
+						<li data-power="40"><a href="view_designer.html" target="_blank">设计师视图</a></li>
+						<li data-power="40|50"><a href="view_admin_4.html?power=50" target="_blank">财务视图</a></li>
+						<li><a id="js_logout" href="javascript:;">退出</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 需求概述 开始 -->
+		<div class="ui_bd">
+			<div class="ui_sidebar">
+				<div class="ui_subnav">
+					<dl>
+						<dt>后台管理</dt>
+						<dd>
+							<ul id="js_filter_state">
+								<li><a href="view_admin.html">访问权限</a></li>
+								<li class="current"><a href="view_admin_5.html">需求归类</a></li>
+								<li><a href="view_admin_3.html">需求类型</a></li>
+								<li><a href="view_admin_2.html">供应商维护</a></li>
+							</ul>
+						</dd>
+						<dt>数据统计</dt>
+						<dd>
+							<ul>
+								<li><a href="view_admin_6.html">统计概况</a></li>
+								<li><a href="view_admin_10.html">外包金额概况</a></li>
+								<li><a href="view_admin_8.html">业务线明细</a></li>
+								<li><a href="view_admin_7.html">外包明细</a></li>
+								<li><a href="view_admin_9.html">外包派驻明细</a></li>
+								
+							</ul>
+						</dd>
+                        <dt>供应商报价</dt>
+                        <dd>
+                            <ul>
+                                <li><a href="view_admin_4.html">查看报价</a></li>
+                                <li><a href="view_admin_11.html">调整报价</a></li>
+                                <li><a href="view_admin_12.html">查看调整记录</a></li>
+                            </ul>
+                        </dd>
+					</dl>
+				</div>
+			</div>
+
+			<div class="ui_mainbar">
+				<div class="ui_page">
+					<div class="ui_page_hd"><h3>需求归类</h3></div>
+					<div class="ui_page_bd">
+						<div class="ui_admin">
+							<div class="ui_admin_add">
+								<table id="js_form" class="ui_tab">
+									<tr>
+										<th>编号前缀</th>
+										<td>
+                                        	<input data-db-name="rank_id" type="hidden" />
+											<input data-db-name="rank_short" type="text" />
+										</td>
+                                        <th>需求归类</th>
+										<td>
+											<input data-db-name="rank_name" type="text" />
+										</td>
+									</tr>
+                                    <tr>
+                                    	<th>审核设计师</th>
+										<td>
+											<textarea data-db-name="rank_designer"></textarea>
+										</td>
+                                        <th>审核前端</th>
+										<td>
+											<textarea data-db-name="rank_wb"></textarea>
+										</td>
+                                    </tr>
+                                    <tr>
+                                    	<th>运营所在部门</th>
+                                        <td>
+                                        	<textarea data-db-name="rank_group"></textarea>
+                                        </td>
+                                        <th></th>
+                                        <td>
+                                        	<button type="button" class="btn_1" id="js_add_rank_btn">添加</button>
+											<button type="button" class="btn_1" id="js_edit_rank_btn" style="display:none">修改</button>
+                                        </td>
+                                    </tr>
+								</table>
+							</div>
+
+							<div class="ui_admin_list">
+								<table id="js_list_table" class="task_tab_list">
+									<thead>
+										<tr>
+											<th style="width:5%">编号前缀</th>
+											<th style="width:10%">需求归类</th>
+											<th style="width:25%">审核设计师</th>
+                                            <th style="width:25%">审核前端</th>
+											<th style="width:15%">运营所在部门</th>
+											<th style="width:15%">操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<script id="js_list_tmpl" type="text/template">
+									{{#rank}}
+									<tr data-id="{{rank_id}}">
+										<td data-db-name="rank_short" class="js_rank_short">{{rank_short}}</td>
+										<td data-db-name="rank_name" class="js_rank_name">{{rank_name}}</td>
+										<td data-db-name="rank_designer" class="js_rank_designer">{{rank_designer}}</td>
+										<td data-db-name="rank_wb" style="text-align:left;">{{rank_wb}}</td>
+										<td data-db-name="rank_group" class="js_rank_group">{{rank_group}}</td>
+										<td>
+											<button type="button" data-id="{{rank_id}}" class="btn_2 js_edit">修改</button>
+											<button type="button" data-id="{{rank_id}}" class="btn_2 js_del">删除</button>
+										</td>
+									</tr>
+									{{/rank}}
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 需求概述 结束 -->
+
+
+		<div class="ui_ft">
+			<p><span>copyright©<a href="http://ecd.tencent.com" target="_blank">ECD</a>.</span></p>
+		</div>
+	</div>
+</body>
+
+<script>
+	seajs.use('./js/ecp.main',function(main){
+		main.load('ecp.admin.rank');
+	})
+</script>
+
+</html>

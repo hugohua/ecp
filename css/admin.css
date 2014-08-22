@@ -1,0 +1,38 @@
+@charset "utf-8";
+@import "layout.css";
+@import "form.css";
+@import "btn.css";
+@import "pop.css";
+@import "hugo.css";
+@import "ecp.css";
+
+	/*======================================= 管理后台 ======================================*/
+		.ui_admin{}
+			.ui_admin_hd{border-bottom:1px solid #DDD;}
+			.ui_admin_hd h4{margin-bottom:5px; font-size:16px; font-weight:normal;}
+
+			.ui_admin_bd{padding:20px 0;}
+				.ui_admin_add{padding:5px 10px; border-bottom:1px solid #FFF; background-color:#F3F3F3;}
+				.ui_admin_add input,
+				.ui_admin_add button{vertical-align:top;}
+				.ui_admin_add input{margin-left:5px; width:200px;}
+				.ui_admin_add button{margin-left:5px;}
+
+				.ui_admin_control{margin-bottom:10px;}
+				.ui_admin_control label{margin-right:20px;}
+				.ui_admin_control select,
+				.ui_admin_control button{vertical-align:top;}
+				.ui_admin_control select{min-width:120px;}
+
+				.ui_admin_list table input{margin-left:5px; padding:5px; width:40px; text-align:center; vertical-align:middle;}
+				.ui_admin_list table  button{margin:0 10px;}
+				.ui_admin_list table .bg_price{
+					display:block;
+					margin:10px 0;
+					width:80px;
+					border-left:2px solid #63A62F;
+				}
+
+				.ui_admin_userinfo img{margin-right:10px; width:40px; height:40px; border:1px solid #CCC; vertical-align:middle;}
+
+				.ui_admin_btn{padding:20px 0; text-align:center;}

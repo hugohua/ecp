@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ECD-任务管理系统</title>
+	<link rel="stylesheet" href="ui/css/ui_lib.css" media="screen" />
+	<link rel="stylesheet" href="css/ecp.css" media="screen" />
+	<script src="js/libs/sea.js"></script>
+</head>
+<body>
+	<div class="ui">
+		<div class="ui_hd">
+			<div class="ui_logo">
+				<h1><a href="view_pm.html" title="ECD-任务管理系统"><span>etask</span><img src="img/logo.png" alt="ECD-Task" /></a></h1>
+			</div>
+
+			<div class="ui_userinfo">
+				<a href="javascript:;" class="ui_userinfo_lk"><span id="js_user_photo" class="ui_userinfo_avatar"></span></a>
+				<div class="ui_userinfo_list">
+					<ul>
+						<li data-power="40"><a href="view_admin.html" target="_blank">后台管理</a></li>
+						<li data-power="40"><a href="view_pm.html" target="_blank">项目经理视图</a></li>
+						<li data-power="40"><a href="view_pdm.html" target="_blank">产品经理视图</a></li>
+						<li data-power="40"><a href="view_designer.html" target="_blank">设计师视图</a></li>
+						<li data-power="40|50"><a href="view_admin_4.html?power=50" target="_blank">财务视图</a></li>
+						<li><a id="js_logout" href="javascript:;">退出</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="ui_bd">
+			<div class="ui_page">
+				<div class="send_container">
+					<div class="send_form">
+						<form method="post" id="js_form">
+							<table class="ui_tab">
+								<tr>
+									<th>标题：</th>
+									<td><input type="text" name="title" data-name="title" /></td>
+								</tr>
+								<tr>
+									<th>收件人：</th>
+									<td><textarea id="js_receiver"  rows="5" cols="10" name="receiver" data-name="receiver" placeholder="英文名，多个收件人时用(分号;)隔开"></textarea></td>
+								</tr>
+								<tr>
+									<th>内容：</th>
+									<td><textarea rows="10" cols="10" name="msginfo" data-name="msginfo"></textarea></td>
+								</tr>
+								<tr>
+									<th></th>
+									<td><button type="submit" id="js_submit" class="btn_3">发送</button></td>
+								</tr>
+							</table>
+						</form>
+					</div>
+					
+					<div class="send_list"><img src="img/rtx.png"></div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="ui_ft">
+			<p><span>copyright©<a href="http://ecd.tencent.com" target="_blank">ECD</a>.</span></p>
+		</div>
+	</div>
+    
+</body>
+
+
+
+
+<script>
+	seajs.use('./js/ecp.main',function(main){
+		main.load('ecp.rtx');
+	})
+</script>
+</html>

@@ -1,0 +1,11 @@
+@charset "utf-8";
+@import "reset.css";
+@import "layout.css";
+@import "form.css";
+@import "btn.css";
+@import "pop.css";
+@import "hugo.css";
+
+
+	/*===== 错误页面 =====*/
+		.ui_error{padding:50px;}

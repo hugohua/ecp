@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ECD-任务管理系统</title>
+    <meta name="renderer" content="webkit">
+	<link rel="stylesheet" href="ui/css/ui_lib.css" media="screen" />
+	<link rel="stylesheet" href="css/error.css" media="screen" />
+	<script src="js/libs/sea.js"></script>
+</head>
+<body style="background-color:#2F2F2F;">
+	<div class="ui" style="left:50%; top:50%; margin:-160px 0 0 -300px; width:600px; height:320px;">
+		<div class="ui_hd">
+			<div class="ui_logo">
+				<h1><span>etask</span><img src="img/logo.png" alt="ECD-Task" /></h1>
+			</div>
+
+			<div class="ui_help">
+				<a href="view_help.html" target="_blank">帮助中心</a>
+			</div>
+
+			<div class="ui_userinfo">
+				<a href="javascript:;" class="ui_userinfo_lk"><span id="js_user_photo" class="ui_userinfo_avatar"></span></a>
+				<div class="ui_userinfo_list">
+					<ul>
+						<li><a id="js_logout" href="javascript:;">退出</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="ui_bd">
+			<div class="task_entry">
+				<p>
+					<a href="http://et.oa.com/" target="_blank" class="btn_3">管理内部需求</a>
+					<a href="view_pm.html" target="_blank" class="btn_3">管理外部需求</a>
+				</p>
+			</div>
+		</div>
+
+		<div class="ui_ft">
+			<p><span>copyright©<a href="http://ecd.tencent.com" target="_blank">ECD</a>.</span></p>
+		</div>
+	</div>
+</body>
+<script>
+	seajs.use('./js/ecp.main',function(main){
+		main.load('ecp.switch');
+	})
+</script>
+</html>

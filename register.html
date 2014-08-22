@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ECD-任务管理系统</title>
+	<link rel="stylesheet" href="ui/css/ui_lib.css" media="screen" />
+	<link rel="stylesheet" href="css/error.css" media="screen" />
+	<script src="js/libs/sea.js"></script>
+</head>
+<body style="background-color:#2F2F2F;">
+	<div class="ui" style="left:50%; top:50%; margin:-250px 0 0 -250px; width:500px; height:500px;">
+		<div class="ui_hd">
+			<div class="ui_logo">
+				<h1><span>etask</span><img src="img/logo.png" alt="ECD-Task" /></h1>
+			</div>
+		</div>
+
+		<div class="ui_bd">
+			<div class="ui_login">
+				<form id="js_form" method="post">
+					<table class="ui_tab">
+						<!--<tr>-->
+							<!--<th>角色</th>-->
+							<!--<td><input type="text" data-db-name="english_name" data-validate /></td>-->
+						<!--</tr>-->
+                        <tr>
+							<th>邮箱前缀</th>
+							<td><input type="text" data-db-name="english_name" data-validate placeholder="xieminghong" /></td>
+						</tr>
+                        <tr>
+                            <th>JD邮箱</th>
+                            <td><input type="text" data-db-name="user_email" data-validate placeholder="xieminghong@jd.com" /></td>
+                        </tr>
+						<tr>
+							<th>中文名</th>
+							<td><input type="text" data-db-name="chinese_name" data-validate placeholder="谢明红" /></td>
+						</tr>
+						<tr>
+							<th>密码</th>
+							<td><input type="password" data-db-name="user_password" data-validate /></td>
+						</tr>
+						<tr>
+							<th>QQ</th>
+							<td><input type="text" data-db-name="user_qq" data-validate /></td>
+						</tr>
+						<tr>
+							<th>手机号码</th>
+							<td><input type="text" data-db-name="user_phone" data-validate /></td>
+						</tr>
+						<tr>
+							<th>部门</th>
+							<td><select data-db-name="department_id" data-validate>
+                                <option value="3000">京东员工</option>
+								<option value="1000">易讯员工</option>
+								<!--<option value="2000">腾讯实习生/外聘</option>-->
+							</select></td>
+						</tr>
+						<tr>
+							<th></th>
+							<td><button type="submit" class="btn_3">注册</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="login.html">登录</a></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+
+		<div class="ui_ft">
+			<p><span>copyright©<a href="http://ecd.tencent.com" target="_blank">ECD</a>.</span></p>
+		</div>
+	</div>
+</body>
+<script>
+	seajs.use('./js/ecp.main',function(main){
+		main.load('ecp.register');
+	})
+</script>
+</html>

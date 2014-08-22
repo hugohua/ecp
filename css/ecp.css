@@ -1,0 +1,349 @@
+@charset "utf-8";
+@import "layout.css";
+@import "form.css";
+@import "btn.css";
+@import "pop.css";
+@import "hugo.css";
+
+
+	/*===== 通用类名 =====*/
+		.bg_1{background-color:#EFEFF2;}
+		.bg_2{background-color:#ebf2f9;}
+
+		.c_tx1{color:#999999;}
+		.c_tx2{color:#FE770D;}
+
+		.ui_help_info{margin:10px; padding:10px; border:1px solid #F0C36D; background-color:#F9EDBE; text-align:center;}
+
+		.pdm_upload{position:absolute; left:50px; top:396px; width:400px;}
+			.pdm_send_mail{padding:0 50px;}
+				.pdm_send_mail li{overflow:hidden; position:relative; height:33px; line-height:32px;}
+				.pdm_send_mail span,
+				.pdm_send_mail input,
+				.pdm_send_mail button{display:inline; float:left;}
+				.pdm_send_mail input{padding:6px 6px 5px; width:638px;}
+				.pdm_send_mail button{position:absolute; right:-10px;}
+
+			.pm_send_mail{padding:0 20px;}
+				.pm_send_mail li{overflow:hidden; margin-bottom:10px; height:33px; line-height:32px;}
+				.pm_send_mail li:last-child{margin-bottom:0; text-align:center;}
+					.pm_send_mail span,
+					.pm_send_mail input{display:inline; float:left;}
+					.pm_send_mail input{padding:6px 6px 5px; width:898px;}
+					.pm_send_mail button{margin-right:0!important;}
+
+		.ui_backtop{position:absolute; right:20px; bottom:-40px; -webkit-transition:all 300ms ease-in-out;}
+		.ui_backtop a{overflow:hidden; display:block; width:20px; height:20px; border-radius:10px; box-shadow:0 1px 1px rgba(0,0,0,0.5); background:#5FB73B url("../img/ico_top.png") no-repeat 50% 50%; line-height:100px;}
+		.ui_backtop_current{bottom:40px;}
+
+		.ecp_tabs{padding-left:20px; background-color:#FFF;}
+		.ecp_tabs i{margin-left:5px; font-style:normal; text-decoration:underline;}
+
+
+	/*===== 默认需求列表 table形式 =====*/
+		.task_tab_list{width:100%; border-bottom:1px solid #ECECEC;}
+			.task_tab_list th,
+			.task_tab_list td{padding:12px 10px; text-align:center;}
+				.task_tab_list th{background-color:#F1F1F1; border-bottom:1px solid #D3D3D3;}
+				.task_tab_list td{border-left:1px solid #ECEEEC; line-height:23px; vertical-align:middle; word-break:break-all;}
+				.task_tab_list tr td:nth-child(1){border-left:none;}
+
+				.tablesorter-header{background-image:url("../img/ico_updown.png"); background-repeat:no-repeat; background-position:95% 50%;}
+				.tablesorter-headerSortUp{background-image:url("../img/ico_down.png"); background-repeat:no-repeat; background-position:95% 50%;}
+				.tablesorter-headerSortDown{background-image:url("../img/ico_up.png"); background-repeat:no-repeat; background-position:95% 50%;}
+
+			.task_tab_list tbody tr:hover{background-color:#E8FADE; color:#048204;}
+			.task_tab_list tbody tr:hover td{border-color:#E8FADE;}
+
+			.task_tab_list tbody tr.current{outline:1px dotted #333; background-color:#C4E8B4; color:#000;}
+			.task_tab_list tr.current td{border-color:#C4E8B4!important;}
+
+
+	/*===== 默认需求详情 右侧弹窗 =====*/
+		.pop_task{
+			visibility:hidden;
+			overflow:auto;
+			position:fixed;
+			z-index:2;
+			right:-421px;
+			top:65px;
+			bottom:31px;
+			width:420px;
+			box-shadow:-2px 0 2px rgba(183,183,183,0.4);
+			background-color:rgba(255,255,255,1);
+			-webkit-transition:all 300ms ease-in-out;
+		}
+		.pop_task_show{right:0; visibility:visible;}
+			.pop_task_close{
+				overflow:hidden;
+				position:absolute;
+				right:0;
+				top:5px;
+				width:30px;
+				height:20px;
+				background:url("../img/btn_close.png") no-repeat 10px 0;
+				line-height:100px;
+			}
+			.pop_task_close:hover{background-color:#CDE6F7; background-position:10px -20px;}
+			.pop_task table{margin-bottom:10px;}
+				.pop_task td{padding:10px; word-break:break-all;}
+				.pop_task td input{width:180px;}
+				.pop_task td select{width:192px;}
+				.pop_task td textarea{display:block; width:230px; height:80px;}
+
+				/*===== 附件列表 =====*/
+				.att_list li{display:inline; position:relative; float:left; margin:10px 10px 10px 0; border:1px solid #CCC; background-color:#FFF;}
+				.att_list li a{color:#555; text-decoration:underline;}
+				.att_list li button{display:none; position:absolute;right:-8px; top:-8px;}
+				.att_list li:hover button{display:block;}
+
+
+	/*===== 日期跨度 =====*/
+		.ui_pickdate{
+			float:left;
+			margin:13px 0 0 20px;
+			padding:1px 5px;
+			border-radius:2px;
+			border:1px solid #DDD;
+			background:-webkit-linear-gradient(top, #f8f8f8 0%,#f3f3f3 50%,#ededed 100%);
+			background:-moz-linear-gradient(top, #f8f8f8 0%,#f3f3f3 50%,#ededed 100%);
+			line-height:28px;
+		}
+			.ui_pickdate input{margin-top:-3px; padding:0 5px; width:80px; line-height:22px; text-align:center;}
+		.ui_pickdate_action{float:left; margin:13px 20px 0 5px;}
+		.ui_top_action{float:right; margin:13px 20px 0 5px;}
+
+	/*===== 复合选择选择 =====*/
+		.task_set .ui_row{
+			margin-bottom:10px;
+			border-left:3px solid #5FB73B;
+		}
+		.task_set .ui_row input[type="number"]{padding-top:6px; width:45px;}
+
+
+	/*======================================= 产品经理添加需求 ================================*/
+		.view_pdm{overflow:auto; position:relative; height:100%;}
+		.view_pdm .tab_style_1{position:absolute; left:0; top:0; width:100%; height:100%; table-layout:fixed;}
+		.view_pdm .tab_style_1 tr:last-child td{border-bottom:none;}
+		.view_pdm .tab_style_1 td:hover{background-color:#FFFAED;}
+
+		.view_pdm .tab_style_2{width:100%; table-layout:fixed;}
+		.view_pdm .tab_style_2 td{border:0 none;}
+
+
+			/*===== 排期表格 =====*/
+				.tapd_tab th{
+					height:28px;
+					vertical-align:middle;
+					font-weight:normal;
+					color:#999;
+				}
+				.tapd_tab th span{margin:0 5px;}
+				.tapd_tab td{cursor:pointer; position:relative; border:1px solid #E4E4E4; border-top:none; border-right:none; vertical-align:top;}
+				.tapd_tab td:first-child{border-left:none;}
+				.tapd_tab .today{color:#FF770D;}
+
+
+			/*===== 需求日期 =====*/
+				.view_pdm_time{overflow:hidden; height:61px; border-bottom:1px solid #E2E2E2; line-height:61px;}
+					.view_pdm_time_tit,
+					.view_pdm_time_btn{display:inline; float:left;}
+					.view_pdm_time_tit{font-weight:bold; font-size:14px; color:#555;}
+					.view_pdm_time_btn{position:relative; margin:15px 20px 0 20px; width:121px; height:31px; background:url("../img/btn_time.png") no-repeat 0 0;}
+					.view_pdm_time_pre,
+					.view_pdm_time_cla,
+					.view_pdm_time_next{overflow:hidden; position:absolute; top:1px; width:39px; height:28px; text-indent:-999px;}
+						.view_pdm_time_pre{left:1px;}
+						.view_pdm_time_cla{left:41px;}
+						.view_pdm_time_next{left:81px;}
+
+
+			/*===== 显示更多天数 =====*/
+				.btn_more_day{overflow:hidden; position:absolute; right:5px; top:64px; width:24px; height:24px; background:url("../img/btn_more.png") no-repeat 50% 50%; text-indent:-999px;}
+
+
+			/*===== 需求录入 =====*/
+				.pop_tapd input{width:180px;}
+				.pop_tapd select{width:192px;}
+				.pop_tapd textarea{display:block; width:529px; height:80px;}
+
+					.pop_tapd_type{position:relative;}
+					.pop_tapd_type input{position:absolute; left:191px; width:36px!important; text-align:center;}
+
+					.pop_tapd_subtype{overflow:hidden; position:relative; margin-bottom:-4px;}
+					.pop_tapd_subtype_item{float:left; margin:0 10px 10px 0; height:28px; border:1px solid #D8DCE5;box-shadow:0 1px 1px rgba(200,200,200,0.3); background-color:#FFF; line-height:28px;}
+					.pop_tapd_subtype_more{position:absolute; right:10px; top:5px; padding-right:12px; background:url("../img/ico_down.png") no-repeat 100% 50%;}
+					.pop_tapd_subtype_item span{padding:0 10px;}
+					.pop_tapd_subtype_item input{width:36px; padding:0; line-height:28px; border-width:0 0 0 1px; vertical-align:top; text-align:center;}
+
+	
+			/*===== 需求展示样式 =====*/
+				.tapd_item{cursor:pointer; position:relative; margin:10px 10px 0;}
+				.tapd_item div{padding:5px; height:20px; border-radius:2px; text-align:left; line-height:21px;}
+					.tapd_item h4{overflow:hidden; width:85%; white-space:nowrap; text-overflow:ellipsis; font-weight:normal;}
+				
+						/*===== 风格 =====*/
+						.tapd_style1 div{
+							cursor:move;
+							border:1px solid #DAEAEB;
+							background-color:#E5F3F4;
+						}
+						.tapd_style2 div{
+							cursor:move;
+							border:1px solid #FBDCDC;
+							background-color:#FFEBED;
+						}
+						.tapd_style3 div{
+							cursor:pointer;
+							border:1px solid #E6E6E6;
+							background-color:#F1F1F1;
+						}
+						.week_hover{background-color:#FFFAED;}
+
+
+	/*============================================ 项目经理页面 ================================*/
+		/*===== 需求概述 =====*/
+			.task_collect{padding:30px 50px;}
+				.task_collect_btn{float:left; margin:8px 0 0 0; padding:5px;}
+				.task_collect_btn a{float:left;}
+				
+				.task_collect_info{font-size:14px;}
+					.task_collect_info span{margin:0 3px; text-shadow:0 1px 1px rgba(0,0,0,0.1); font-size:24px;}
+
+				.task_collect_tit{margin-bottom:10px; font-size:14px; font-weight:normal;}
+
+				.task_collect_list li{margin-top:20px; padding:20px 20px 20px 80px; border-left:3px solid #55BC75; background:#E8E8E8 url("../img/ico_order.png") no-repeat 20px 50%;}
+					.task_collect_list li p{display:inline-block; margin-right:20px; vertical-align:middle;}
+					.task_collect_list li span{margin:0 3px; text-shadow:0 1px 1px rgba(0,0,0,0.1); font-size:16px;}
+
+
+		/*===== 待邮件 =====*/
+			.task_review{padding-bottom:40px;}
+				.task_review h4{
+					padding:20px 20px 10px 60px;
+					background:url("../img/ico_supplier.png") no-repeat 20px 50%;
+					text-shadow:0 1px 1px rgba(0,0,0,0.1);
+					font-size:16px;
+					font-weight:normal;
+					color:#FF770D;
+				}
+
+				.task_review_btn{padding-top:10px; text-align:center;}
+				.task_review_btn button{margin-right:10px;}
+
+			.btn_post_mail{position:absolute; right:10px; top:2px;}
+
+
+		/*===== 需求已安排 =====*/
+			.select_done{color:#999;}
+			.select_done td:first-child{background:url("../img/ico_done.png") no-repeat 0 50%;}
+
+		/*===== 分页 =====*/
+			.page_ecp{text-align:center;}
+
+
+	/*====================================== 用户资料 ======================================*/
+		.pop_userinfo{text-align:center;}
+			.pop_userinfo p{margin-bottom:10px;}
+			.pop_userinfo th,
+			.pop_userinfo td{padding:10px;}
+			.pop_userinfo input{padding:5px; width:250px;}
+
+
+	/*======================================= 搜索页面 ======================================*/
+		.ecp_search{overflow:auto; height:100%;}
+			.ecp_search_tab{padding-top:10px; padding-bottom:5px;}
+			.ecp_search_tab table{width:100%;}
+			.ecp_search_tab th,
+			.ecp_search_tab td{padding:5px 10px;}
+			.ecp_search_tab th{width:100px; text-align:right; font-weight:normal;}
+			.ecp_search_tab td input{width:150px;}
+			.ecp_search_tab td textarea{width:150px;vertical-align:top;}
+			.ecp_search_tab td select{width:162px;}
+
+			.ecp_search_btns{text-align:center;}
+			.ecp_search_btns button{margin:0 5px;}
+
+			.ecp_search_con{ margin: 20px;}
+			.ecp_search_result{padding:10px; font-size:14px;}
+
+			.excel_control{padding:0 20px;}
+			.excel_control label{margin-left:10px; vertical-align:middle;}
+			.excel_control label input[type="radio"]{position:relative; top:-3px; margin-right:3px;}
+
+
+
+
+	/*===================================== 统计页面 ===================================*/
+		.ecp_statistics_desc{padding: 10px 30px;}
+		.ecp_statistics_item{overflow:hidden; padding:20px; min-height:300px;}
+		.ecp_statistics_grap{float:left; margin-top:20px; width:60%; height:450px; text-align:center;}
+		.ecp_statistics_tab{float:left; margin:20px 0 0 50px;}
+		.ecp_statistics_item{border-bottom:1px dotted #CCC;}
+		.ecp_statistics_item:last-child{border-bottom:none;}
+		.ecp_statistics_item h4{padding:10px; font-size:16px;}
+		.ecp_statistics_item table{width:500px; text-align:center;}
+		.ecp_statistics_item th,
+		.ecp_statistics_item td{padding:10px; border:1px solid #E3EBD8;}
+			.ecp_statistics_item th{border-bottom:1px solid #CCC; background-color:#E3EBD8;}
+			.ecp_statistics_item td{background-color:#EDF4E4;}
+			.ecp_statistics_item tr.hightline td,
+			.ecp_statistics_item tr:hover td{background-color:#E3EBD8;}
+
+		.ecp_statistics_table table{width: 100%; text-align: center;}	
+
+
+	/*======================================= RTX发布页面 ======================================*/
+		.send_container{padding:20px;}
+			.send_form{display:inline-block; width:600px; vertical-align:top;}
+				.send_form input{width:450px;}
+				.send_form textarea{width:450px;}
+
+			.send_list{display:inline-block; width:300px}
+
+		.ecp_edit_tips{padding: 20px; font-size: 14px;}
+	
+	/*======================================= 供应商维护页 ======================================*/
+	.ui_hetong{ text-overflow:ellipsis; overflow:hidden; height: 45px; }
+	.cp_table tr[data-type="1"]{background: #FBE4D5;}
+
+	/*======================================= 统计 ======================================*/
+	.rank_statistics_table th,
+	.rank_statistics_table .rank_last{background: #B1A0C7; color: #000; font-weight: 700; text-align: center; border:1px solid #999;}
+	.rank_statistics_table td{background: #fff; border:1px solid #999;}
+	.rank_statistics_table tbody th,
+	.rank_statistics_table tfoot th{background: #fff; width: 85px;}
+	
+	.cp_statistics{margin: 0;}
+	.cp_statistics_table th,
+	.cp_statistics_table .cp_last{background: #BAE18F; color: #000; font-weight: 700; text-align: center; border:1px solid #999;}
+	.cp_statistics_table td{background: #fff; border:1px solid #999;}
+	.cp_statistics_table tbody th,
+	.cp_statistics_table tfoot th{background: #fff; width: 85px;}
+
+	.cpw_statistics_table th,
+	.cpw_statistics_table .cp_last{background: #E6B9B8; color: #000; font-weight: 700; text-align: center; border:1px solid #999;}
+	.cpw_statistics_table td{background: #fff; border:1px solid #999;}
+	.cpw_statistics_table tbody th,
+	.cpw_statistics_table tfoot th{background: #fff; width: 85px;}
+	
+	#js_rank_table tr td{text-align: right; padding-right: 20px;}
+	#js_rank_table tr td:nth-child(1){padding-left: 20px; padding-right: 0; text-align: left;}
+
+	/*======================================= 修改价格 ======================================*/
+    .ui_editprice_txt{margin: 20px 0;}
+    .ui_editprice_name{text-shadow: 0 0 1px rgba(0, 0, 0, 0.2); font-size: 14px; margin: 30px 0 10px 0; font-weight: 400;}
+    .ui_editprice_topaction{float: right;}
+    .ui_editprice_topaction a{margin-right: 30px;}
+
+    /*======================================= 帮助 ======================================*/
+    .ui_help{ position: absolute; top:22px; right: 110px;  }
+    .ui_help a{font-size: 14px; color: #fff;}
+    .help{padding: 20px;}
+    	.help_tit{font-size: 16px; font-weight: 700; color: #EF4272; margin-bottom: 10px;}
+    	.help_cnt{line-height: 20px; font-size: 14px;}
+
+    	.video{margin: 20px; width: 800px;}
+    	.video video{width: 100%; height: auto;}
+
+	

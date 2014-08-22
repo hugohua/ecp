@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ECD-任务管理系统</title>
+    <meta name="renderer" content="webkit">
+	<link rel="stylesheet" href="ui/css/ui_lib.css" media="screen" />
+	<link rel="stylesheet" href="css/admin.css" media="screen" />
+	<script src="js/libs/sea.js"></script>
+</head>
+<body>
+	<div class="ui">
+		<div class="ui_hd">
+			<div class="ui_logo">
+				<h1><a href="view_pm.html" title="ECD-任务管理系统"><span>etask</span><img src="img/logo.png" alt="ECD-Task" /></a></h1>
+			</div>
+
+			<div class="ui_help">
+				<a href="view_help_2.html" target="_blank">帮助中心</a>
+			</div>
+
+			<div class="ui_nav">
+				<ul class="clearfix">
+					<li><a target="_blank" href="view_search.html">需求搜索</a></li>
+                    <li><a target="_blank" href="view_admin_6.html">数据统计</a></li>
+				</ul>
+			</div>
+
+
+			<div class="ui_userinfo">
+				<a href="javascript:;" class="ui_userinfo_lk"><span id="js_user_photo" class="ui_userinfo_avatar"></span></a>
+				<div class="ui_userinfo_list">
+					<ul>
+						<li data-power="40"><a href="view_admin.html" target="_blank">后台管理</a></li>
+						<li data-power="40"><a href="view_pm.html" target="_blank">项目经理视图</a></li>
+						<li data-power="40"><a href="view_pdm.html" target="_blank">产品经理视图</a></li>
+						<li data-power="40"><a href="view_designer.html" target="_blank">设计师视图</a></li>
+						<li data-power="40|50"><a href="view_admin_4.html?power=50" target="_blank">财务视图</a></li>
+						<li><a id="js_logout" href="javascript:;">退出</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 需求概述 开始 -->
+		<div class="ui_bd">
+			<div class="ui_sidebar">
+				<div class="ui_subnav">
+					<dl>
+						<dt>后台管理</dt>
+						<dd>
+							<ul id="js_filter_state">
+								<li><a href="view_admin.html">访问权限</a></li>
+								<li><a href="view_admin_5.html">需求归类</a></li>
+								<li><a href="view_admin_3.html">需求类型</a></li>
+								<li><a href="view_admin_2.html">供应商维护</a></li>
+							</ul>
+						</dd>
+						<dt>数据统计</dt>
+						<dd>
+							<ul>
+								<li><a href="view_admin_6.html">统计概况</a></li>
+								<li><a href="view_admin_10.html">外包金额概况</a></li>
+								<li><a href="view_admin_8.html">业务线明细</a></li>
+								<li><a href="view_admin_7.html">外包明细</a></li>
+								<li><a href="view_admin_9.html">外包派驻明细</a></li>
+							</ul>
+						</dd>
+                        <dt>供应商报价</dt>
+                        <dd>
+                            <ul>
+                                <li><a href="view_admin_4.html">查看报价</a></li>
+                                <li class="current"><a href="view_admin_11.html">调整报价</a></li>
+                                <li><a href="view_admin_12.html">查看调整记录</a></li>
+                            </ul>
+                        </dd>
+					</dl>
+				</div>
+			</div>
+
+			<div class="ui_mainbar">
+				<div class="ui_page">
+					<div class="ui_page_hd">
+						<h3>调整供应商报价</h3>
+                        <div class="ui_editprice_topaction">
+                            <a href="view_admin_12.html" class="btn_3">返回历史价格列表</a>
+                            <a href="view_admin_11.html" class="btn_3">调整供应商价格</a>
+                        </div>
+					</div>
+					<div class="ui_page_bd">
+						<div class="ui_admin">
+							<div class="ui_editprice">
+								<table id="js_table_editprice" class="task_tab_list">
+									<thead>
+										<tr>
+											<th>日期</th>
+											<th>CP</th>
+											<th>类型</th>
+											<th>评分类型</th>
+											<th>原金额</th>
+											<th>现金额</th>
+											<th>操作/合同</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<input type="hidden" data-db-name="edit_id" autocomplete="off">
+												<input type="text" data-db-name="edit_date" autocomplete="off">
+											</td>
+											<td>
+												<select data-db-name="edit_cp_id" autocomplete="off"></select>
+											</td>
+											<td>
+												<select data-db-name="edit_type_id" autocomplete="off"></select>
+											</td>
+											<td>
+												<select data-db-name="edit_price_type" autocomplete="off">
+													<option value="B">无等级</option>
+													<option value="A">A等级</option>
+													<option value="B">B等级</option>
+													<option value="C">C等级</option>
+													<option value="H">派驻设计师固定工资</option>
+												</select>
+											</td>
+											<td>
+												<input type="text" data-db-name="edit_old_price" autocomplete="off">
+											</td>
+											<td><input type="text" data-db-name="edit_new_price" autocomplete="off"></td>
+											<td class="js_action">
+												<button class="btn_2 js_del">删除</button>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="hidden" data-db-name="edit_id" autocomplete="off">
+												<input type="text" data-db-name="edit_date" autocomplete="off">
+											</td>
+											<td>
+												<select data-db-name="edit_cp_id" autocomplete="off"></select>
+											</td>
+											<td>
+												<select data-db-name="edit_type_id" autocomplete="off"></select>
+											</td>
+											<td>
+												<select data-db-name="edit_price_type" autocomplete="off">
+													<option value="B">无等级</option>
+													<option value="A">A等级</option>
+													<option value="B">B等级</option>
+													<option value="C">C等级</option>
+													<option value="H">派驻设计师固定工资</option>
+												</select>
+											</td>
+											<td>
+												<input type="text" data-db-name="edit_old_price" autocomplete="off">
+											</td>
+											<td><input type="text" data-db-name="edit_new_price" autocomplete="off"></td>
+											<td class="js_action">
+												<button class="btn_2 js_del">删除</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+                                <div class="ui_admin_btn">
+                                    <button id="js_add_row" class="btn_1 btn_big">新增一行</button> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    <button id="js_save_btn" type="button" class="btn_1 btn_big">提交保存</button>
+                                    <button id="js_confirm_btn" style="display: none" class="btn_1 btn_big">审核：确认本次供应商报价</button>
+                                </div>
+								<p class="c_tx2">说明：日期 为价格生效的日期(只能选择当月1号的日期)，即为该日期起，往后的价格都是调整后的金额。</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 需求概述 结束 -->
+
+
+		<div class="ui_ft">
+			<p><span>copyright©<a href="http://ecd.tencent.com" target="_blank">ECD</a>.</span></p>
+		</div>
+	</div>
+</body>
+
+<script>
+	seajs.use('./js/ecp.main',function(main){
+		main.load('ecp.admin.editprice');
+	})
+</script>
+
+</html>

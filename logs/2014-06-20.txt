@@ -1,0 +1,1 @@
+2014-06-20 12:12:24 - INFO  --> ()  post user success. msg = {"english_name":"adsdsa","user_email":"adsdsa","chinese_name":"adsdsa","user_password":"4d12111ba28194a442c3d27943ff5d44","user_qq":"adsdsa","user_phone":"121332","department_id":"3000","login_name":"adsdsa","full_name":"adsdsa(adsdsa)","id":"703"} 

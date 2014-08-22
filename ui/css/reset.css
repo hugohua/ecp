@@ -1,0 +1,74 @@
+@charset "utf-8";
+
+	/*===== 重置样式 =====*/
+		html,
+		body{height:100%;}
+
+		*{
+			margin:0;
+			padding:0;
+			border:0 none;
+			background:transparent;
+			font-size:100%;
+			vertical-align:baseline;
+		}
+
+		article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{
+			display:block;
+		}
+
+		body,input,button,select,textarea,table{font:12px/1.5 "\5FAE\8F6F\96C5\9ED1",Tahoma,Helvetica,Arial,sans-serif;}
+
+		body{
+			background-color:#FFF;
+			color:#666;
+		}
+
+		ul,ol{list-style:none;}
+
+		img{vertical-align:top;}
+
+		input,select{vertical-align:middle;}
+		label,
+		input[type=button],
+		input[type=submit]{cursor:pointer;}
+
+		button{cursor:pointer; overflow:visible; padding:0; width:auto;}
+		
+		textarea{overflow:auto;}
+
+		table{
+			border-collapse:collapse;
+			border-spacing:0;
+		}
+
+		a{color:#5B617D;}
+		a:link,a:visited{text-decoration:none;}
+		a:hover,a:active{text-decoration:underline;}
+
+		.clearfix:after{
+			display:block;
+			clear:both;
+			content:"\0020";
+			visibility:hidden;
+			height:0;
+		}
+
+		.c_tx1{color:#F60;}
+		.c_tx2{color:#999;}
+
+
+	/*===== 滚动条 =====*/
+		::-webkit-scrollbar{
+			-webkit-appearance:none;
+			width:12px;
+			height:12px;
+			background-color:#F3F3F3;
+		}
+
+		::-webkit-scrollbar-thumb{
+			border:1px solid #ABABAB;
+			background-color:#FFFFFF;
+		}
+
+		::-webkit-scrollbar-thumb:hover{border-color:#777777;}

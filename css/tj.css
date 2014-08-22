@@ -1,0 +1,15 @@
+@charset "utf-8";
+@import "layout.css";
+@import "form.css";
+@import "btn.css";
+@import "pop.css";
+@import "hugo.css";
+
+	/*================================= 统计 ===============================*/
+		.ui_tj{padding:20px;}
+			.ui_tj_hd{margin-bottom:20px; padding:10px; border-radius:2px; border:1px solid #F0C36D; background-color:#F9EDBE;}
+			.ui_tj_hd li{display:inline-block; margin-left:20px;}
+				.ui_tj_hd input,
+				.ui_tj_hd select{vertical-align:middle;}
+				.ui_tj_hd input{width:100px;}
+				.ui_tj_hd select{min-width:120px;}

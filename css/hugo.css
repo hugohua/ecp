@@ -1,0 +1,141 @@
+.select_done{display:table-row !important;}
+.js_temp{background:#CCC;}
+
+.show_item_list{display:block !important}
+.show_item_list .tapd_item_list{display:block;}
+
+.ui_tables .ui_state{display:none;}
+
+/*显示或隐藏周末*/
+.weekend td[data-num="6"],
+.weekend td[data-num="7"],
+.weekend th[data-num="6"],
+.weekend th[data-num="7"]{ display:none;}
+
+.btn_1{
+	background:-moz-linear-gradient(top, #72baed 0%,#58a5e7 100%);
+}
+.btn_2{
+	background:-moz-linear-gradient(top, #ffffff 0%,#ffffff 79%,#f4f4f6 100%);
+}
+/*设计稿上传 样式 feeling 可进行整合*/
+.att_list img{width:50px; height:50px;}
+.ui_iframe_upload{width:210px; height:33px;}
+
+
+.js_cp_tr_name{display:none;}
+.ui_userinfo_list ul li[data-power]{display:none;}
+
+/*显示邮件预览时的CP供应商*/
+.js_ui_window_con .js_cp_tr_name{display:block;}
+/* 访问权限 表格默认隐藏 */
+.user_list table{display:none;}
+
+/*需求归类 审核设计师*/
+.ui_admin_list .js_rank_designer,
+.ui_admin_list .js_rank_group{text-align:left; padding-left:10px;}
+
+/*临时兼容下ff*/
+@-moz-document url-prefix() { 
+.ui_mainbar{ margin-left:181px}
+.ui_sidebar,.ui_timechain{position:absolute; height:100%}
+}
+
+/*邮件排序*/
+#js_ui_window .tablesorter-header{cursor:pointer;}
+
+/*头部搜索链接*/
+.ui_search_link{margin:0 20px; float:left;}
+#js_ui_tables .js_ui_page{display: none; position: relative;}
+
+.qq-uploader{position:relative; height:45px; }
+.qq-upload-button{
+    border:1px solid #A749BB;
+	background-color:#B658C8!important;
+	background-image:linear-gradient(bottom,#B665C8 0%,#AF52C3 100%);
+	background-image:-o-linear-gradient(bottom,#B665C8 0%,#AF52C3 100%);
+	background-image:-moz-linear-gradient(bottom,#B665C8 0%,#AF52C3 100%);
+	background-image:-webkit-linear-gradient(bottom,#B665C8 0%,#AF52C3 100%);
+	background-image:-ms-linear-gradient(bottom,#B665C8 0%,#AF52C3 100%);
+	background-image:-webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0,#B665C8),
+		color-stop(1,#AF52C3)
+	);
+	background-position:center top;
+	background-repeat:no-repeat;
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	border-radius:2px;
+	color:#FFF;
+	text-align:center;
+	font-family:"microsoft yahei";
+	width: 100px;
+	height: 28px;
+	line-height: 28px;
+}
+
+.qq-upload-button-hover,
+.qq-upload-button-focus{
+	background-color: #B658C8!important;
+	background-color:#B658C8!important;
+	background-image:linear-gradient(bottom,#B665C8 0%,#AF52C3 100%);
+	background-image:-o-linear-gradient(bottom,#B665C8 0%,#AF52C3 100%);
+	background-image:-moz-linear-gradient(bottom,#B665C8 0%,#AF52C3 100%);
+	background-image:-webkit-linear-gradient(bottom,#B665C8 0%,#AF52C3 100%);
+	background-image:-ms-linear-gradient(bottom,#B665C8 0%,#AF52C3 100%);
+	background-image:-webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0,#B665C8),
+		color-stop(1,#AF52C3)
+	);
+	background-position: center bottom;
+}
+.uploadify-button.disabled {
+	background-color: #D0D0D0;
+	color: #808080;
+}
+
+.qq-upload-drop-area{
+	color:#777777;
+	width:90%;
+	height:100%;
+	min-height:45px;
+	text-align:center;
+	background-color:#F4F4F4;
+	border:2px dashed #DCDFE4;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	cursor:move;
+	position:absolute;
+	z-index:2;
+	top:0;
+	left:0;
+}
+.qq-upload-drop-area span{
+	display:block;
+	position:absolute;
+	top:50%;
+	margin-top:-14px;
+	width:100%;
+	font-size:16px;
+}
+.qq-upload-drop-area-active{color:#FF7171;background-color:RGBA(255,151,151,1);border:2px dashed #FF7171;}
+
+.qq-upload-list {margin:15px 35px;padding:0;list-style:disc;display:none;}
+.qq-upload-list li {margin:0;padding:0;line-height:15px;font-size:12px;}
+.qq-upload-file, .qq-upload-spinner, .qq-upload-size, .qq-upload-cancel, .qq-upload-failed-text {
+    margin-right: 7px;
+}
+
+.qq-upload-file {}
+.qq-upload-spinner {display:inline-block; background: url("loading.gif"); width:15px; height:15px; vertical-align:text-bottom;}
+.qq-upload-size,.qq-upload-cancel {font-size:11px;}
+
+.qq-upload-failed-text {display:none;}
+.qq-upload-fail .qq-upload-failed-text {display:inline;}

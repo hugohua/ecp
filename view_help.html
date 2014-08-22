@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ECD-任务管理系统</title>
+    <meta name="renderer" content="webkit">
+	<link rel="stylesheet" href="ui/css/ui_lib.css" media="screen" />
+	<link rel="stylesheet" href="css/admin.css" media="screen" />
+	<script src="js/libs/sea.js"></script>
+	<script src="js/lib/jquery.js"></script>
+</head>
+<body>
+	<div class="ui">
+		<div class="ui_hd">
+			<div class="ui_logo">
+				<h1><a href="view_pm.html" title="ECD-任务管理系统"><span>etask</span><img src="img/logo.png" alt="ECD-Task" /></a></h1>
+			</div>
+
+			<div class="ui_help">
+				<a href="view_help_2.html" target="_blank">帮助中心</a>
+			</div>
+
+
+			<div class="ui_userinfo">
+				<a href="javascript:;" class="ui_userinfo_lk"><span id="js_user_photo" class="ui_userinfo_avatar"></span></a>
+				<div class="ui_userinfo_list">
+					<ul>
+						<li data-power="40"><a href="view_admin.html" target="_blank">后台管理</a></li>
+						<li data-power="40"><a href="view_pm.html" target="_blank">项目经理视图</a></li>
+						<li data-power="40"><a href="view_pdm.html" target="_blank">产品经理视图</a></li>
+						<li data-power="40"><a href="view_designer.html" target="_blank">设计师视图</a></li>
+						<li data-power="40|50"><a href="view_admin_4.html?power=50" target="_blank">财务视图</a></li>
+						<li><a id="js_logout" href="javascript:;">退出</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 需求概述 开始 -->
+		<div class="ui_bd">
+			<div class="ui_sidebar">
+				<div class="ui_subnav">
+					<dl>
+						<dt>帮助中心</dt>
+						<dd>
+							<ul id="js_filter_state">
+								<li><a href="view_help_2.html">ECP流程指引</a></li>
+								<li><a href="view_help_1.html">需求类型区分</a></li>
+								<li class="current"><a href="view_help.html">常见问题</a></li>
+                                <li><a href="view_help_3.html">CP优秀作品</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+			</div>
+
+			<div class="ui_mainbar">
+				<div class="ui_page">
+					<div class="ui_page_hd"><h3>常见问题</h3></div>
+					<div class="ui_page_bd">
+						<div class="help">
+							<h4 class="help_tit">Q1：我们目前有多少家CP，对应接口人是谁，他们各有什么特点呢？</h4>
+							<div class="help_cnt">
+								<img src="img/cp.png" alt="">
+							</div>
+						</div>
+						<div class="help">
+							<h4 class="help_tit">Q2：我是新人，刚接手CP外包这块，流程和规范都不知道，怎么办？</h4>
+							<div class="help_cnt">
+								A：方法1、找到之前负责这块的同事，详细了解流程；方法2、至ECP平台帮助中心学习
+							</div>
+						</div>
+						<div class="help">
+							<h4 class="help_tit">Q5：明天要开始做设计，我今天提交需求，可以吗？</h4>
+							<div class="help_cnt">
+								A：这种算临时需求，因为我们的排期都是上周五已经排好的，所以临时需求可能会遭遇CP都没有空档的情况，建议能排期的尽量排期；
+							</div>
+						</div>
+						<div class="help">
+							<h4 class="help_tit">Q7：需求启动后，需求人还需要做什么工作？</h4>
+							<div class="help_cnt">
+								<p>A： 概括来说，有两点：</p>
+								<ol>
+									<li>1、需求人需要及时跟进需求，积极反馈意见，保证需求的顺利进行；</li>
+									<li>2、需求完成时，把完成文件上传至ECP平台以备结算。</li>
+								</ol>
+							</div>
+						</div>
+						<div class="help">
+							<h4 class="help_tit">Q8： 月结的打分制度是怎么来打？</h4>
+							<div class="help_cnt">
+								<p>A： 为了激励CP做出更多优质设计，特设立了这个打分制度，由内部审核设计师和需求人双方一起来打分，两个分数的平均分决定了这个页面需求的价格；</p>
+								<p>需求人可以从服务态度、效率、设计质量等各个方面来考核，审核设计师就直接以页面效果来考核；</p>
+								<p>双方的平均分达到85分以上就属于A类价格，平均分为60-85属于B类价格，只要有一个分低于60分，那就属于C类价格；</p>
+							</div>
+						</div>
+						<div class="help">
+							<h4 class="help_tit">Q9： 碰到CP页面设计效果差、效率低、时间拖后怎么办？</h4>
+							<div class="help_cnt">
+								A： 如遇到类似这样的情况，请联系Nicoleyin(尹丁丁），来做协调；
+							</div>
+						</div>
+						<div class="help">
+							<h4 class="help_tit">Q10：流程中有什么注意要点呢？</h4>
+							<div class="help_cnt">
+								<p>— 需求讨论组一般是由CP接口人建，禁止把不同CP的人拉到同一个讨论组 </p>
+								<p>— 紧急情况找CP做了需求应该尽快补提，不经过ECP平台排期，会结算不到</p>
+							</div>
+						</div>
+						<div class="help">
+							<h4 class="help_tit">Q5：明天要开始做设计，我今天提交需求，可以吗？</h4>
+							<div class="help_cnt">
+								A：这种算临时需求，因为我们的排期都是上周五已经排好的，所以临时需求可能会遭遇CP都没有空档的情况，建议能排期的尽量排期；
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 需求概述 结束 -->
+
+
+		<div class="ui_ft">
+			<p><span>copyright©<a href="http://ecd.tencent.com" target="_blank">ECD</a>.</span></p>
+		</div>
+	</div>
+</body>
+
+
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ECD-任务管理系统</title>
+    <meta name="renderer" content="webkit">
+	<link rel="stylesheet" href="ui/css/ui_lib.css" media="screen" />
+	<link rel="stylesheet" href="css/admin.css" media="screen" />
+	<script src="js/libs/sea.js"></script>
+	<script src="js/lib/jquery.js"></script>
+	<script src="http://top.oa.com/js/tcc.js" type="text/javascript"></script>
+</head>
+<body>
+	<div class="ui">
+		<div class="ui_hd">
+			<div class="ui_logo">
+				<h1><a href="view_pm.html" title="ECD-任务管理系统"><span>etask</span><img src="img/logo.png" alt="ECD-Task" /></a></h1>
+			</div>
+
+			<div class="ui_nav">
+				<ul class="clearfix">
+					<li><a target="_blank" href="view_search.html">需求搜索</a></li>
+                    <li><a target="_blank" href="view_admin_6.html">数据统计</a></li>
+				</ul>
+			</div>
+
+			<div class="ui_userinfo">
+				<a href="javascript:;" class="ui_userinfo_lk"><span id="js_user_photo" class="ui_userinfo_avatar"></span></a>
+				<div class="ui_userinfo_list">
+					<ul>
+						<li data-power="40"><a href="view_admin.html" target="_blank">后台管理</a></li>
+						<li data-power="40"><a href="view_pm.html" target="_blank">项目经理视图</a></li>
+						<li data-power="40"><a href="view_pdm.html" target="_blank">产品经理视图</a></li>
+						<li data-power="40"><a href="view_designer.html" target="_blank">设计师视图</a></li>
+						<li data-power="40|50"><a href="view_admin_4.html?power=50" target="_blank">财务视图</a></li>
+						<li><a id="js_logout" href="javascript:;">退出</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 需求概述 开始 -->
+		<div class="ui_bd">
+			<div class="ui_sidebar">
+				<div class="ui_subnav">
+					<dl>
+						<dt>后台管理</dt>
+						<dd>
+							<ul id="js_filter_state">
+								<li class="current"><a href="view_admin.html">访问权限</a></li>
+								<li><a href="view_admin_5.html">需求归类</a></li>
+								<li><a href="view_admin_3.html">需求类型</a></li>
+								<li><a href="view_admin_2.html">供应商维护</a></li>
+							</ul>
+						</dd>
+						<dt>数据统计</dt>
+						<dd>
+							<ul>
+								<li><a href="view_admin_6.html">统计概况</a></li>
+								<li><a href="view_admin_10.html">外包金额概况</a></li>
+								<li><a href="view_admin_7.html">CP明细</a></li>
+								<li><a href="view_admin_8.html">业务线明细</a></li>
+								<li><a href="view_admin_9.html">外包派驻明细</a></li>
+							</ul>
+						</dd>
+                        <dt>供应商报价</dt>
+                        <dd>
+                            <ul>
+                                <li><a href="view_admin_4.html">查看报价</a></li>
+                                <li><a href="view_admin_11.html">调整报价</a></li>
+                                <li><a href="view_admin_12.html">查看调整记录</a></li>
+                            </ul>
+                        </dd>
+					</dl>
+				</div>
+			</div>
+
+			<div class="ui_mainbar">
+				<div class="ui_page">
+					<div class="ui_page_hd">
+						<h3>访问权限</h3>
+						<div class="ui_filter" id="js_filter_type">
+							<a href="javascript:;" data-power="1">游客</a>
+							<a href="javascript:;" data-power="10">产品经理</a>
+							<a href="javascript:;" data-power="20">设计师</a>
+							<a href="javascript:;" data-power="30">项目经理</a>
+							<a href="javascript:;" data-power="50">财务</a>
+							<a href="javascript:;" data-power="40">管理员</a>
+						</div>
+					</div>
+					<div class="ui_page_bd">
+						<div class="ui_admin">
+							<div class="ui_admin_add">
+								<table class="ui_tab" id="js_form">
+									<tr>
+										<th><span id="js_user_type"></span></th>
+										<td>
+											<span id="js_temp"></span>
+											<script type="text/javascript">
+												try{
+													new Tcc.UserChooser({id: 'js_user_name', name: 'data[Ticket][owner1]', choosertype: 1});
+												}catch(err){
+													$('#js_temp').append('<input type="text" id="js_user_name" data-validate />');
+												}
+											</script>
+											<button type="button" class="btn_2" id="js_add_user_btn">添加</button>
+										</td>
+									</tr>
+								</table>
+							</div>
+
+							<div class="ui_admin_list user_list" id="js_admin_list">
+								<!-- 游客 -->
+								<table id="js_list_table_1" class="task_tab_list js_tablesorter">
+									<thead>
+										<tr>
+											<th>用户名</th>
+											<th>部门</th>
+											<th>小组</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<script id="js_list_tmpl_1" type="text/template">
+									{{#users}}
+									<tr>
+										<td style="text-align:left;padding-left:20px;">
+											<div class="ui_admin_userinfo">
+												<img src="http://dayu.oa.com/avatars/{{english_name}}/avatar.jpg" alt="{{full_name}}" />
+												<span>{{full_name}}</span>
+											</div>
+										</td>
+										<td>{{department_name}}</td>
+										<td>{{group_name}}</td>
+										<td>
+										<select data-id="{{id}}" class="js_change_power">
+											<option value="1" selected>游客</option>
+											<option value="10">产品经理</option>
+											<option value="20">设计师</option>
+											<option value="30">项目经理</option>
+											<option value="50">财务</option>
+											<option value="40">管理员</option>
+										</select>
+										</td>
+									</tr>
+									{{/users}}
+									{{^users}}
+									<tr>
+										<td>未找到相关数据</td>
+									</tr>
+									{{/users}}
+								</script>
+
+
+								<!-- 产品经理 -->
+								<table id="js_list_table_10" class="task_tab_list js_tablesorter">
+									<thead>
+										<tr>
+											<th style="width:20%">用户名</th>
+											<th>部门</th>
+											<th>小组</th>
+											<th>电话</th>
+											<th>QQ</th>
+											<th>登录次数</th>
+                                            <th>用户权限</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<script id="js_list_tmpl_10" type="text/template">
+									{{#users}}
+									<tr>
+										<td style="text-align:left;padding-left:20px;">
+											<div class="ui_admin_userinfo">
+												<img src="http://dayu.oa.com/avatars/{{english_name}}/avatar.jpg" alt="{{full_name}}" />
+												<span>{{full_name}}</span>
+											</div>
+										</td>
+										<td>{{department_name}}</td>
+										<td>{{group_name}}</td>
+										<td>{{user_phone}}</td>
+										<td>{{user_qq}}</td>
+										<td>{{user_login_time}}</td>
+										<td>{{user_power_rank}}</td>
+										<td>
+										<select data-id="{{id}}" class="js_change_power">
+											<option value="1">游客</option>
+											<option value="10" selected>产品经理</option>
+											<option value="20">设计师</option>
+											<option value="30">项目经理</option>
+											<option value="50">财务</option>
+											<option value="40">管理员</option>
+										</select>
+										<!--<button data-id="{{id}}" class="btn_2">删除</button>-->
+										</td>
+									</tr>
+									{{/users}}
+									{{^users}}
+									<tr>
+										<td colspan="3">未找到相关数据</td>
+									</tr>
+									{{/users}}
+								</script>
+
+
+								<!-- 设计师 -->
+								<table id="js_list_table_20"  class="task_tab_list js_tablesorter">
+									<thead>
+										<tr>
+											<th style="width:20%">用户名</th>
+											<th>部门</th>
+											<th>小组</th>
+											<th>电话</th>
+											<th>QQ</th>
+											<th>登录次数</th>
+                                            <th>用户权限</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<script id="js_list_tmpl_20" type="text/template">
+									{{#users}}
+									<tr>
+										<td style="text-align:left;padding-left:20px;">
+											<div class="ui_admin_userinfo">
+												<img src="http://dayu.oa.com/avatars/{{english_name}}/avatar.jpg" alt="{{full_name}}" />
+												<span>{{full_name}}</span>
+											</div>
+										</td>
+										<td>{{department_name}}</td>
+										<td>{{group_name}}</td>
+										<td>{{user_phone}}</td>
+										<td>{{user_qq}}</td>
+										<td>{{user_login_time}}</td>
+										<td>{{user_power_rank}}</td>
+										<td>
+											<select data-id="{{id}}" class="js_change_power">
+											<option value="1" >游客</option>
+											<option value="10">产品经理</option>
+											<option value="20" selected>设计师</option>
+											<option value="30">项目经理</option>
+											<option value="50">财务</option>
+											<option value="40">管理员</option>
+										</select>
+										</td>
+									</tr>
+									{{/users}}
+									{{^users}}
+									<tr>
+										<td colspan="3">未找到相关数据</td>
+									</tr>
+									{{/users}}
+								</script>
+
+
+								<!-- 项目经理 -->
+								<table id="js_list_table_30" class="task_tab_list js_tablesorter">
+									<thead>
+										<tr>
+											<th style="width:20%">用户名</th>
+											<th>部门</th>
+											<th>小组</th>
+											<th>电话</th>
+											<th>QQ</th>
+											<th>登录次数</th>
+                                            <th>用户权限</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<script id="js_list_tmpl_30" type="text/template">
+									{{#users}}
+									<tr>
+										<td style="text-align:left;padding-left:20px;">
+											<div class="ui_admin_userinfo">
+												<img src="http://dayu.oa.com/avatars/{{english_name}}/avatar.jpg" alt="{{full_name}}" />
+												<span>{{full_name}}</span>
+											</div>
+										</td>
+										<td>{{department_name}}</td>
+										<td>{{group_name}}</td>
+										<td>{{user_phone}}</td>
+										<td>{{user_qq}}</td>
+										<td>{{user_login_time}}</td>
+										<td>{{user_power_rank}}</td>
+										<td>
+											<select data-id="{{id}}" class="js_change_power">
+												<option value="1" >游客</option>
+												<option value="10">产品经理</option>
+												<option value="20">设计师</option>
+												<option value="30" selected>项目经理</option>
+												<option value="50">财务</option>
+												<option value="40">管理员</option>
+											</select>
+										</td>
+									</tr>
+									{{/users}}
+									{{^users}}
+									<tr>
+										<td colspan="3">未找到相关数据</td>
+									</tr>
+									{{/users}}
+								</script>
+
+
+								<!-- 管理员 -->
+								<table id="js_list_table_40"  class="task_tab_list js_tablesorter">
+									<thead>
+										<tr>
+											<th style="width:30%">用户名</th>
+											<th>部门</th>
+											<th>小组</th>
+											<th>电话</th>
+											<th>QQ</th>
+											<th>登录次数</th>
+                                            <th>用户权限</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<script id="js_list_tmpl_40" type="text/template">
+									{{#users}}
+									<tr>
+										<td style="text-align:left;padding-left:20px;">
+											<div class="ui_admin_userinfo">
+												<img src="http://dayu.oa.com/avatars/{{english_name}}/avatar.jpg" alt="{{full_name}}" />
+												<span>{{full_name}}</span>
+											</div>
+										</td>
+										<td>{{department_name}}</td>
+										<td>{{group_name}}</td>
+										<td>{{user_phone}}</td>
+										<td>{{user_qq}}</td>
+										<td>{{user_login_time}}</td>
+										<td>{{user_power_rank}}</td>
+										<td>
+											<select data-id="{{id}}" class="js_change_power">
+												<option value="1" >游客</option>
+												<option value="10">产品经理</option>
+												<option value="20">设计师</option>
+												<option value="30">项目经理</option>
+												<option value="50">财务</option>
+												<option value="40" selected>管理员</option>
+											</select>
+										</td>
+									</tr>
+									{{/users}}
+									{{^users}}
+									<tr>
+										<td>未找到相关数据</td>
+									</tr>
+									{{/users}}
+								</script>
+
+
+								<!-- 财务 -->
+								<table id="js_list_table_50" class="task_tab_list js_tablesorter">
+									<thead>
+										<tr>
+											<th style="width:20%">用户名</th>
+											<th>部门</th>
+											<th>小组</th>
+											<th>电话</th>
+											<th>QQ</th>
+											<th>登录次数</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<script id="js_list_tmpl_50" type="text/template">
+									{{#users}}
+									<tr>
+										<td style="text-align:left;padding-left:20px;">
+											<div class="ui_admin_userinfo">
+												<img src="http://dayu.oa.com/avatars/{{english_name}}/avatar.jpg" alt="{{full_name}}" />
+												<span>{{full_name}}</span>
+											</div>
+										</td>
+										<td>{{department_name}}</td>
+										<td>{{group_name}}</td>
+										<td>{{user_phone}}</td>
+										<td>{{user_qq}}</td>
+										<td>{{user_login_time}}</td>
+										<td>
+											<select data-id="{{id}}" class="js_change_power">
+												<option value="1" >游客</option>
+												<option value="10">产品经理</option>
+												<option value="20">设计师</option>
+												<option value="30">项目经理</option>
+												<option value="50">财务</option>
+												<option value="40" selected>管理员</option>
+											</select>
+										</td>
+									</tr>
+									{{/users}}
+									{{^users}}
+									<tr>
+										<td>未找到相关数据</td>
+									</tr>
+									{{/users}}
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 需求概述 结束 -->
+
+
+		<div class="ui_ft">
+			<p><span>copyright©<a href="http://ecd.tencent.com" target="_blank">ECD</a>.</span></p>
+		</div>
+	</div>
+</body>
+
+<script>
+	seajs.use('./js/ecp.main',function(main){
+		main.load('ecp.admin.users');
+	})
+</script>
+
+</html>

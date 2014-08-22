@@ -1,0 +1,12 @@
+2014-08-12 10:13:30 - INFO  --> (p_jdyghua)  update user name das success. msg = user_name:das 
+2014-08-12 10:17:36 - ERROR --> (p_jdyghua)  update user name das error. msg = SQLSTATE[HY000]: General error 
+2014-08-12 10:25:31 - INFO  --> (p_jdyghua)  update user name p_jdyghua success. msg = user_name:p_jdyghua 
+2014-08-12 10:25:35 - INFO  --> (p_jdyghua)  update user name p_jdyghua success. msg = user_name:p_jdyghua 
+2014-08-12 10:29:45 - INFO  --> (p_jdyghua)  update user name p_jdyghua success. msg = user_name:p_jdyghua 
+2014-08-12 10:30:00 - INFO  --> (p_jdyghua)  update user name p_jdyghua success. msg = user_name:p_jdyghua 
+2014-08-12 10:32:08 - INFO  --> (p_jdyghua)  update user name p_jdyghua success. msg = user_name:p_jdyghua 
+2014-08-12 10:32:36 - INFO  --> (p_jdyghua)  update user name p_jdyghua success. msg = user_name:p_jdyghua 
+2014-08-12 10:32:47 - INFO  --> (p_jdyghua) p_jdyghua login success. msg = false 
+2014-08-12 10:33:15 - INFO  --> (p_jdyghua) p_jdyghua login success. msg = false 
+2014-08-12 10:34:39 - INFO  --> (p_jdyghua) p_jdyghua login success. msg = {"login_name":"p_jdyghua","user_power":"40"} 
+2014-08-12 10:37:12 - INFO  --> (p_jdyghua)  update user name p_jdyghua success. msg = user_name:p_jdyghua 
