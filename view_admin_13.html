@@ -26,7 +26,6 @@
 				</ul>
 			</div>
 
-
 			<div class="ui_userinfo">
 				<a href="javascript:;" class="ui_userinfo_lk"><span id="js_user_photo" class="ui_userinfo_avatar"></span></a>
 				<div class="ui_userinfo_list">
@@ -53,8 +52,8 @@
 							<ul id="js_filter_state">
 								<li><a href="view_admin.html">访问权限</a></li>
 								<li><a href="view_admin_5.html">需求归类</a></li>
-                                <li><a href="view_admin_13.html">需求归类细分</a></li>
-								<li><a href="view_admin_3.html">需求类型</a></li>
+                                <li class="current"><a href="view_admin_13.html">需求归类细分</a></li>
+                                <li><a href="view_admin_3.html">需求类型</a></li>
 								<li><a href="view_admin_2.html">供应商维护</a></li>
 							</ul>
 						</dd>
@@ -64,7 +63,7 @@
 								<li><a href="view_admin_6.html">统计概况</a></li>
 								<li><a href="view_admin_10.html">外包金额概况</a></li>
 								<li><a href="view_admin_8.html">业务线明细</a></li>
-								<li class="current"><a href="view_admin_7.html">外包明细</a></li>
+								<li><a href="view_admin_7.html">外包明细</a></li>
 								<li><a href="view_admin_9.html">外包派驻明细</a></li>
 							</ul>
 						</dd>
@@ -82,29 +81,58 @@
 
 			<div class="ui_mainbar">
 				<div class="ui_page">
-					<div class="ui_page_hd">
-						<h3>数据统计 CP明细</h3>
-						<div class="ui_pickdate">
-                        	<input type="text" id="js_date_from" placeholder="年-月-日" /> - <input type="text" id="js_date_to" placeholder="年-月-日"  />
-						</div>
-						
-						<a href="javascript:;" title="确认" id="js_stati_btn" style="float:left; margin:13px 20px 0 5px" class="btn_3">确定</a>
-						<a href="javascript:;" title="导出Excel 只能按月份导出" id="js_export_btn" style="float:right; margin:13px 20px 0 5px" class="btn_3">导出Excel</a>
-			
-					</div>
+					<div class="ui_page_hd"><h3>需求归类细分</h3></div>
 					<div class="ui_page_bd">
+						<div class="ui_admin">
+							<div class="ui_admin_add">
+								<table id="js_form" class="ui_tab">
+									<tr>
+										<th>归类名称</th>
+										<td>
+                                            <select id="js_rank">
 
-						<div id="js_stat_cont" class="ecp_statistics">
-							<!-- <div class="ecp_statistics_item">
-								<h4>需求类型占比</h4>
-								<div id="js_type_table" class="ecp_statistics_table">
-									<table class="js_tablesorter">
-										<thead></thead>
-										<tbody></tbody>
-                                        <tfoot></tfoot>
-									</table>
-								</div>
-							</div> -->
+                                            </select>
+                                            <script id="js_rank_tmpl" type="text/template">
+                                                {{#rank}}
+                                                <option value="{{rank_id}}">{{rank_name}}</option>
+                                                {{/rank}}
+                                            </script>
+                                        	<input data-db-name="rank_cate_id" type="hidden" />
+											<input id="js_rank_cate" data-db-name="rank_cate_name" type="text" />
+                                            
+											<button type="button" class="btn_1" id="js_add_rankcate_btn">添加</button>
+											<button type="button" class="btn_1" id="js_edit_rankcate_btn" style="display:none">修改</button>
+										</td>
+									</tr>
+								</table>
+							</div>
+
+							<div class="ui_admin_list">
+								<table class="task_tab_list">
+									<thead>
+										<tr>
+											<th style="width:40%">需求归类</th>
+											<th>细分需求归类</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody id="js_list_table">
+									
+									</tbody>
+								</table>
+								<script id="js_list_tmpl" type="text/template">
+									{{#rankcate}}
+									<tr data-id="{{rank_cate_id}}" data-rank-id="{{rank_id}}">
+                                        <td class="js_rank_name">{{rank_name}}</td>
+										<td class="js_rankcate_name">{{rank_cate_name}}</td>
+										<td>
+											<button type="button" data-id="{{rank_cate_id}}" class="btn_2 js_edit">修改</button>
+											<button type="button" data-id="{{rank_cate_id}}" class="btn_2 js_del">删除</button>
+										</td>
+									</tr>
+									{{/rankcate}}
+								</script>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -118,53 +146,12 @@
 		</div>
 	</div>
 </body>
-<script id="js_stat_tpl" type="text/template">
-	{{#data}}
-		{{#cp}}
-		<div id="cp_{{cp_id}}" class="ecp_statistics_item">
-			<h4>{{cp_name}}</h4>
-			<div class="ecp_statistics_table cp_statistics">
-				<table class="js_tablesorter cp_statistics_table" data-name="{{cp_name}}">
-					<thead>
-						<tr>
-							<th>分类</th>
-							{{#type}}
-							<th>{{type_name}}</th>
-							{{/type}}
-							<th>金额</th>
-						</tr>
-					</thead>
-					<tbody>
-						{{#rank}}
-						<tr>
-							<th>{{rank_name}}</th>
-							{{#type}}
-							<td id="d_{{cp_id}}_{{type_id}}_{{rank_id}}" class="js_num">0</td>
-							{{/type}}
-							<td class="js_tolprice">0</td>
-						</tr>
-						{{/rank}}
-						
-					</tbody>
-	                <tfoot>
-						<tr>
-							<th>合计</th>
-							{{#type}}
-							<td class="js_price">0</td>
-							{{/type}}
-							<td class="js_tolprice cp_last">0</td>
-						</tr>
-	                </tfoot>
-				</table>
-			</div>
-		</div>
-		{{/cp}}
-	{{/data}}
-</script>
+
+
 
 <script>
 	seajs.use('./js/ecp.main',function(main){
-		main.load('ecp.statistics.cp');
+		main.load('ecp.admin.rankcate');
 	})
 </script>
 

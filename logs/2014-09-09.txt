@@ -1,0 +1,3 @@
+2014-09-09 14:23:43 - INFO  --> (p_jdyghua)  put rank id 1 success. msg = {"rank_id":"1","rank_short":"YX","rank_name":"易迅运营","rank_designer":"echo(ICSON何鹃)|小易说事，小易教你，单品，新品，发现;hancehan(ICSON韩夏)|家电,百货,IT数码,通讯,EDM模板,无线,其他","rank_wb":"ezrealhuang(黄炘)|全部;willhu(ICSON胡伟伟)|全部;bariwang(ICSON王小保)|无线","rank_group":"易迅运营"} 
+2014-09-09 15:24:30 - INFO  --> (p_jdyghua)  put user id 30 success. msg = :{"user_operator":"p_jdyghua","user_power":"20","id":"30"} 
+2014-09-09 15:31:42 - INFO  --> (p_jdyghua)  put user id 40 success. msg = :{"user_operator":"p_jdyghua","user_operator_time":"2014-9-9 3:31:41","user_power":"40","id":"40"} 

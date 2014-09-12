@@ -150,6 +150,8 @@ define(function(require, exports, module) {
 				var $this = $(this),
 					obj = {
 					users:{
+                        user_operator:Fun.getUserName(),
+                        user_operator_time:Fun.dateFormat(new Date(),'yyyy-M-d h:m:s'),
 						user_power:$this.getValue(),
 						id:$this.attr('data-id')
 					}

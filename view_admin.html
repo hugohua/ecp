@@ -50,6 +50,7 @@
 							<ul id="js_filter_state">
 								<li class="current"><a href="view_admin.html">访问权限</a></li>
 								<li><a href="view_admin_5.html">需求归类</a></li>
+                                <li><a href="view_admin_13.html">需求归类细分</a></li>
 								<li><a href="view_admin_3.html">需求类型</a></li>
 								<li><a href="view_admin_2.html">供应商维护</a></li>
 							</ul>
@@ -119,6 +120,8 @@
 											<th>部门</th>
 											<th>小组</th>
 											<th>操作</th>
+                                            <th>操作人员</th>
+                                            <th>操作时间</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -145,6 +148,8 @@
 											<option value="40">管理员</option>
 										</select>
 										</td>
+                                        <td>{{user_operator}}</td>
+                                        <td>{{user_operator_time}}</td>
 									</tr>
 									{{/users}}
 									{{^users}}
@@ -164,9 +169,12 @@
 											<th>小组</th>
 											<th>电话</th>
 											<th>QQ</th>
+                                            <th>Email</th>
 											<th>登录次数</th>
                                             <th>用户权限</th>
 											<th>操作</th>
+                                            <th>操作人员</th>
+                                            <th>操作时间</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -185,6 +193,7 @@
 										<td>{{group_name}}</td>
 										<td>{{user_phone}}</td>
 										<td>{{user_qq}}</td>
+                                        <td>{{user_email}}</td>
 										<td>{{user_login_time}}</td>
 										<td>{{user_power_rank}}</td>
 										<td>
@@ -198,11 +207,13 @@
 										</select>
 										<!--<button data-id="{{id}}" class="btn_2">删除</button>-->
 										</td>
+                                        <td>{{user_operator}}</td>
+                                        <td>{{user_operator_time}}</td>
 									</tr>
 									{{/users}}
 									{{^users}}
 									<tr>
-										<td colspan="3">未找到相关数据</td>
+										<td colspan="5">未找到相关数据</td>
 									</tr>
 									{{/users}}
 								</script>
@@ -217,9 +228,12 @@
 											<th>小组</th>
 											<th>电话</th>
 											<th>QQ</th>
+                                            <th>Email</th>
 											<th>登录次数</th>
                                             <th>用户权限</th>
 											<th>操作</th>
+                                            <th>操作人员</th>
+                                            <th>操作时间</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -238,6 +252,7 @@
 										<td>{{group_name}}</td>
 										<td>{{user_phone}}</td>
 										<td>{{user_qq}}</td>
+                                        <td>{{user_email}}</td>
 										<td>{{user_login_time}}</td>
 										<td>{{user_power_rank}}</td>
 										<td>
@@ -250,11 +265,13 @@
 											<option value="40">管理员</option>
 										</select>
 										</td>
+                                        <td>{{user_operator}}</td>
+                                        <td>{{user_operator_time}}</td>
 									</tr>
 									{{/users}}
 									{{^users}}
 									<tr>
-										<td colspan="3">未找到相关数据</td>
+										<td colspan="5">未找到相关数据</td>
 									</tr>
 									{{/users}}
 								</script>
@@ -269,9 +286,12 @@
 											<th>小组</th>
 											<th>电话</th>
 											<th>QQ</th>
+                                            <th>Email</th>
 											<th>登录次数</th>
                                             <th>用户权限</th>
 											<th>操作</th>
+                                            <th>操作人员</th>
+                                            <th>操作时间</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -290,6 +310,7 @@
 										<td>{{group_name}}</td>
 										<td>{{user_phone}}</td>
 										<td>{{user_qq}}</td>
+                                        <td>{{user_email}}</td>
 										<td>{{user_login_time}}</td>
 										<td>{{user_power_rank}}</td>
 										<td>
@@ -302,6 +323,8 @@
 												<option value="40">管理员</option>
 											</select>
 										</td>
+                                        <td>{{user_operator}}</td>
+                                        <td>{{user_operator_time}}</td>
 									</tr>
 									{{/users}}
 									{{^users}}
@@ -321,9 +344,12 @@
 											<th>小组</th>
 											<th>电话</th>
 											<th>QQ</th>
+                                            <th>Email</th>
 											<th>登录次数</th>
                                             <th>用户权限</th>
 											<th>操作</th>
+                                            <th>操作人员</th>
+                                            <th>操作时间</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -342,6 +368,7 @@
 										<td>{{group_name}}</td>
 										<td>{{user_phone}}</td>
 										<td>{{user_qq}}</td>
+                                        <td>{{user_email}}</td>
 										<td>{{user_login_time}}</td>
 										<td>{{user_power_rank}}</td>
 										<td>
@@ -354,6 +381,8 @@
 												<option value="40" selected>管理员</option>
 											</select>
 										</td>
+                                        <td>{{user_operator}}</td>
+                                        <td>{{user_operator_time}}</td>
 									</tr>
 									{{/users}}
 									{{^users}}
@@ -373,8 +402,11 @@
 											<th>小组</th>
 											<th>电话</th>
 											<th>QQ</th>
+                                            <th>Email</th>
 											<th>登录次数</th>
 											<th>操作</th>
+                                            <th>操作人员</th>
+                                            <th>操作时间</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -392,7 +424,8 @@
 										<td>{{department_name}}</td>
 										<td>{{group_name}}</td>
 										<td>{{user_phone}}</td>
-										<td>{{user_qq}}</td>
+                                        <td>{{user_qq}}</td>
+                                        <td>{{user_email}}</td>
 										<td>{{user_login_time}}</td>
 										<td>
 											<select data-id="{{id}}" class="js_change_power">
@@ -404,6 +437,8 @@
 												<option value="40" selected>管理员</option>
 											</select>
 										</td>
+                                        <td>{{user_operator}}</td>
+                                        <td>{{user_operator_time}}</td>
 									</tr>
 									{{/users}}
 									{{^users}}

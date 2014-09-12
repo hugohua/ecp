@@ -134,8 +134,8 @@ define(function(require, exports, module) {
 				exports.createTable(1, week_obj);
 				$otd = $('#js_req_list tr:last td[data-day="'+ start_date +'"]');//.eq(index);
 				exports.getDropTd($otd,wday,week_obj,start_date);
-			};
-		};
+			}
+		}
 		return $ntd;
 	};	
 	
@@ -158,11 +158,12 @@ define(function(require, exports, module) {
          * 判断是否是临时需求
          * 本周提本周需求
          * 本周五提下周需求
+         * TODO 还是有些人 是
          */
         if( ($.inArray(data.day,thisWeek) !== -1) || (nowDay >= 5 && $.inArray(data.day,nextWeek) !== -1) ){
             type_name = '[临时需求]';
             tempreq = true;
-            alert('此为临时需求，请确保已走邮件申请临需的流程，感谢配合!\n 临时需求判断：\n 周一到周日提交本周的需求;\n 周五到周日提交下周的需求');
+            alert('此为临时需求，请确保已走邮件申请临需的流程，感谢配合!\n 临时需求判断：\n 周一到周日提交本周的需求;\n 周五到周日提交下周的需求  ');//\n 若无法提交请RTX联系: p_jdyghua ，或QQ联系：13964332
         }
 
         $('#js_req_type').text(type_name);

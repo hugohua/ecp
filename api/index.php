@@ -49,7 +49,7 @@ $app->post('/require', function () use ($app) {
 			'att_is_parent' => 1,
 		);
 		$sql2 = buildSqlInsert('tb_attribute',$att);
-		$stmt = $db->prepare($sql2);  
+		$stmt = $db->prepare($sql2);
 		$stmt->execute();
 		
 		
@@ -2545,7 +2545,7 @@ $app->put('/prices/check/confirm', function() use ($app){
  * 获取全部归类的子分类
  */
 $app->get('/rankcate', function() use ($app){
-	$sql = "SELECT * FROM  `tb_rank_cate` WHERE  `tb_rank_cate_state` = 1";
+	$sql = "SELECT `tb_rank_cate`.rank_id,`tb_rank_cate`.rank_cate_id,`tb_rank_cate`.rank_cate_name,`tb_rank`.rank_name FROM  `tb_rank_cate` LEFT JOIN tb_rank  ON `tb_rank_cate`.`rank_id` = `tb_rank`.`rank_id`  WHERE  `rank_cate_state` = 1  ORDER BY `rank_id` ASC ";
 	try {
 		$db = getConnection();
 		$stmt = $db->prepare($sql);  
@@ -2562,17 +2562,71 @@ $app->get('/rankcate', function() use ($app){
  * 根据rank id 获取归类的子分类
  */
 $app->get('/rankcate/id/:id', function($id) use ($app){
-	$sql = "SELECT * FROM  `tb_rank_cate` WHERE  `rank_id` = $id AND `rank _cate_state` = 1";
-	try {
-		$db = getConnection();
-		$stmt = $db->prepare($sql);  
-		$stmt->execute();
-		$req_data = $stmt->fetchAll(PDO::FETCH_OBJ);
-		$db = null;
-		echo '{"rankcate":'. json_encode($req_data) .'}';
-	} catch(PDOException $e) {
-		echo '{"error":{"text":"'. $e->getMessage() .'"}}'; 
-	}
+    $sql = "SELECT * FROM  `tb_rank_cate` WHERE  `rank_id` = $id AND `rank_cate_state` = 1";
+    try {
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $req_data = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        echo '{"rankcate":'. json_encode($req_data) .'}';
+    } catch(PDOException $e) {
+        echo '{"error":{"text":"'. $e->getMessage() .'"}}';
+    }
+});
+
+/**
+ * 新增
+ */
+$app->post('/rankcate', function() use ($app){
+     $req_data = $app->request()->post();
+     $data = $req_data['rankcate'];
+     $sql = buildSqlInsert('tb_rank_cate',$data);
+    try {
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $data['rank_cate_id'] = $db->lastInsertId();
+        $db = null;
+        echo '{"rankcate":'. json_encode($data) .'}';
+    } catch(PDOException $e) {
+        echo '{"error":{"text":"'. $e->getMessage() .'"}}';
+    }
+});
+
+/**
+ * 根据rank id 获取归类的子分类
+ */
+$app->put('/rankcate/id/:id', function($id) use ($app){
+    $req_data = $app->request()->put();
+    $data = $req_data['rankcate'];
+    $where = '`rank_cate_id` =' . $id;
+    $sql = buildSqlUpdate('tb_rank_cate',$data,$where);
+    try {
+        $db = getConnection();
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $db = null;
+        echo '{"rankcate":'. json_encode($data) .'}';
+    } catch(PDOException $e) {
+        echo '{"error":{"text":"'. $e->getMessage() .'"}}';
+    }
+});
+
+/**
+ * 根据rank id 获取归类的子分类
+ */
+$app->delete('/rankcate/id/:id', function($id) use ($app){
+    $sql = "UPDATE `tb_rank_cate` SET  `rank_cate_state` =  '0' WHERE  `rank_cate_id` =$id";
+    try {
+        $db = getConnection();
+        $db->query($sql);
+        $db = null;
+        $data['rank_cate_id'] = $id;
+        echo '{"rankcate":'. json_encode($data) .'}';
+    } catch(PDOException $e) {
+        echo '{"error":{"text":"'. $e->getMessage() .'"}}';
+    }
 });
 
 
@@ -2581,18 +2635,26 @@ $app->get('/rankcate/id/:id', function($id) use ($app){
  * 获取一段时间 已删除的需求
  */
 $app->get('/require/del/:type', function($type) use ($app){
-	
-	$select = buildReqSelect('tb_require');
-	
-	$where = 'WHERE  `is_del` = 1 ';
-	
-	$where_type = buildDateSql($type);
-	
-	//构造sql语句
-	$sql = $select . $where . $where_type . ' order by tb_require.require_start_date';
-	//echo $sql;
-	echo buildReqSql($sql);
+
+    $select = buildReqSelect('tb_require');
+
+    $where = 'WHERE  `is_del` = 1 ';
+
+    $where_type = buildDateSql($type);
+
+    //构造sql语句
+    $sql = $select . $where . $where_type . ' order by tb_require.require_start_date';
+    //echo $sql;
+    echo buildReqSql($sql);
 });
+
+///**
+// * 获取归类细分
+// */
+//$app->get('/require_cate', function() use ($app){
+//
+//    $sql = "SELECT * FROM tb_rank_cate "
+//});
 
 
 $app->run();

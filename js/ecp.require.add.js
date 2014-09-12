@@ -87,7 +87,7 @@ define(function(require, exports, module) {
 
 				if(old){
 					alert('您还有逾期未处理的【待评分】需求'+ old +'个，需要先完成上传才能添加新的需求。如果已经上传完请按F5刷新页面 ！');
-					$('#js_filter_state li[data-state="8"]').trigger('click');
+					$('#js_filter_state').find('li[data-state="8"]').trigger('click');
 					return;
 				}
 
@@ -104,7 +104,7 @@ define(function(require, exports, module) {
 				//显示弹窗
 				ReqFun.showRequirePop(true);
 				//清空需求属性设置
-				$('#js_attr_cont tbody').empty();
+				$('#js_attr_cont').find('tbody').empty();
 				//Fun.clearAttrPop();
 				//触发事件
 				//Fun.showPopAtt( 1 );//页面首页
@@ -142,7 +142,7 @@ define(function(require, exports, module) {
                                 rank_cate_id:obj.require.require_rank_cate_id
                             };
                             localStore.setRankRequire(defaultRank);
-						};
+						}
 					});
 				}else{
 					Fun.alert(0,msg.add_error);
@@ -181,20 +181,19 @@ define(function(require, exports, module) {
 				cpData = localStore.getCpData(),
 				tpl_cp = $('#js_cp_tmpl').html(),
 				listCp = Mustache.to_html(tpl_cp, cpData);
+            //修改下拉框
+            var str = '0';
             //debugger;
 			$('#js_require_type_id,#js_pop_require_type_id select,#js_pop_require_type_id_2').html(listType);
             $('#js_require_rank_id,#js_pop_require_rank_id select').html(listRank);
             $('#js_require_rank_cate_id,#js_pop_require_rank_cate_id select,#js_bd_rank_cate').html(listRankCate);
 
-			$('#js_point_cp').html(listCp);
-			//修改下拉框
-			var str = '0';
-			$('#js_point_cp').find('[data-type="1"]').each(function(){
+			$('#js_point_cp').html(listCp).find('[data-type="1"]').each(function(){
 				var $this = $(this),
 					cp_id = $this.attr('value');
 					str += ',' + cp_id;
 				$this.appendTo('#js_waipai');	
-			})
+			});
 			$('#js_waipai_all').attr('value',str);
 			
 			$('.js_type_select').html(listType_2);
@@ -213,7 +212,7 @@ define(function(require, exports, module) {
 					if(confirm('确认要删除这行吗?')){
 						$tr.remove();
 						att_id && RestApi.delAttrById(att_id);
-					};
+					}
 				}else{
 					$tr.remove();
 					att_id && RestApi.delAttrById(att_id);
@@ -224,8 +223,8 @@ define(function(require, exports, module) {
             var $attrCont = $('#js_attr_cont');
 			//新增一行按钮
             $attrCont.on('click.add','.js_add',function(){
-				var str = $('#js_attr_clone tbody').html();
-				$('#js_attr_cont tbody').append(str);
+				var str = $('#js_attr_clone').find('tbody').html();
+				$('#js_attr_cont').find('tbody').append(str);
 				return false;
 			});
 			
@@ -251,7 +250,7 @@ define(function(require, exports, module) {
 				if(type_id == this_type_id && show_num == 1){
 					Fun.alert(0,'请直接在【需求类型】那选择数量即可，无需新增一样的配套类型');
 					$this.setValue(1);
-				};
+				}
 			});
 		},
 
@@ -279,7 +278,7 @@ define(function(require, exports, module) {
 			$('#js_require_verify_user2').on({
 				'focus':function(){
 					var id = $(this).attr('id'),
-						rank_id = $('#js_pop_require_rank_id select').getValue();
+						rank_id = $('#js_pop_require_rank_id').find('select').getValue();
 					Fun.showCheckUserPop(rank_id,'#'+id)
 				}
 			});

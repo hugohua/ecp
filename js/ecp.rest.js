@@ -998,11 +998,53 @@ define(function(require, exports, module) {
     /***
      * 获取全部归类的子分类
      */
-    exports.getRankCate = function(id,params){
+    exports.getRankCate = function(params){
         params = params || {};
         params.url = getUrl('api/rankcate');
         return baseRest(params);
     };
+
+    /***
+     * 获取全部归类的子分类
+     */
+    exports.putRankCateById = function(id,data){
+        var params = {
+            data : data,
+            url : getUrl('api/rankcate/id/' + id),
+            success : function(t_data){
+                if(t_data.error){
+                    alert(t_data.error.text);
+                }
+            }
+        };
+        return baseRest(params,'PUT');
+    };
+
+    /***
+     * 删除
+     */
+    exports.delRankCateById = function(id,params){
+        params = params || {};
+        params.url = getUrl("api/rankcate/id/" + id);
+        return baseRest(params,'DELETE');
+    };
+
+    /***
+     * 新增
+     */
+    exports.addRankCate = function(data){
+        var params = {
+            data : data,
+            url : getUrl('api/rankcate'),
+            success : function(t_data){
+                if(t_data.error){
+                    alert(t_data.error.text);
+                }
+            }
+        };
+        return baseRest(params, 'POST');
+    };
+
 
     /**
      * 获取所有已删除需求

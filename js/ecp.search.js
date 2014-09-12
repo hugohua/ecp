@@ -299,7 +299,7 @@ define(function(require, exports, module) {
     		//部分显示
     	}else{
     		$('#js_req_mark').hide();
-    	};
+    	}
     	
     	
     	if(data.require_state == 3){
@@ -342,7 +342,16 @@ define(function(require, exports, module) {
     	}else{
     		$('#js_pop_require_desgin_comment').hide();
     	}
-    	
+
+        //几月几号之前则不允许修改
+        //2014/3/10号（含10号）之前的数据全部冻结，只能查询
+        var $eidtForm = $('#js_req_mark,#js_edit_req_btn,#js_pop_editstate,#js_pop_editclear,#js_pop_editstate');
+        if(new Date(data.require_start_date).getTime() <= 1394409600000){
+            $eidtForm.hide()
+        }else{
+            $eidtForm.show();
+        }
+
 		ReqFun.showRightPop();
     };
     
@@ -520,8 +529,7 @@ define(function(require, exports, module) {
     				require_id = $this.attr('data-id');
     			
     			localStore.getRequireDataById(require_id,function(data){
-    				console.info(data,'ddddddd');	
-	    			$this.addClass('current').siblings().removeClass('current');	
+	    			$this.addClass('current').siblings().removeClass('current');
 	    			setPopCont(data);
 	    			//设置需求状态
 	    			$('#js_change_state').setValue(data.require_state);

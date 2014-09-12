@@ -549,6 +549,16 @@ define(function(require, exports, module) {
     	}else{
     		$('#js_pop_require_desgin_comment').hide();
     	}
+
+        //几月几号之前则不允许修改
+        //2014/3/10号（含10号）之前的数据全部冻结，只能查询
+        var $eidtForm = $('#js_req_mark,#js_edit_req_btn,#js_pop_editstate,#js_pop_editclear,#js_pop_editstate');
+        if(new Date(data.require_start_date).getTime() <= 1394409600000){
+            $eidtForm.hide()
+        }else{
+            $eidtForm.show();
+        }
+
 		ReqFun.showRightPop();
     };
     
@@ -797,7 +807,7 @@ define(function(require, exports, module) {
 		}
 		
 		var obj = {
-			subject			:"【腾讯电商】"+ cp_name + date_str + "周工作计划",
+			subject			:"【京东外包】"+ cp_name + date_str + "周工作计划",
 			sender			:sender,		//发送者
 			receiver		:cp_email,		//接受者
 			msg				:msg
@@ -1509,7 +1519,7 @@ define(function(require, exports, module) {
 					date_str = getEmailSendDate();
 		
 				var email_obj = {
-					subject			:"【腾讯电商】"+ cp_name + date_str + "周工作计划",
+					subject			:"【京东外包】"+ cp_name + date_str + "周工作计划",
 					sender			:users.sender,		//发送者
 					receiver		:users.receiver,		//接受者
 					cc				:users.cc,

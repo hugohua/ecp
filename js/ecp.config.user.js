@@ -31,11 +31,13 @@ define(function(require, exports, module) {
 	exports.pm_list = 'yindingding@jd.com;';
 	
 	//PDM邮件抄送
-	exports.email_cc = 'yindingding@jd.com;xieminghong@jd.com;lejiamin@jd.com;renqiang1@jd.com;fangyuming@jd.com,liuqian1@jd.com';
+	exports.email_cc = 'yindingding@jd.com;xieminghong@jd.com;lejiamin@jd.com;renqiang1@jd.com;fangyuming@jd.com,liuqian1@jd.com;zhangliyuan1@jd.com;';
 	
 	//CP启动邮件需要抄送给如下用户
-	exports.email_cp_cc = 'yindingding@jd.com;xieminghong@jd.com;';
+	exports.email_cp_cc = 'yindingding@jd.com;xieminghong@jd.com;zhangliyuan1@jd.com;';
 	
 	//易讯CP启动邮件需要抄送给如下用户
-	exports.yixun_cp_dev = 'filialwang;mangohuang;';
+	exports.yixun_cp_dev = 'lejiamin@jd.com;';
+
+    exports.email_jdwuxian_cc = 'zhushuai@jd.com;caiximei1@jd.com;';
 });

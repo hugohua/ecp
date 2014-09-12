@@ -552,7 +552,11 @@ define(function(require, exports, module) {
 					if(rank_id == 1 && (type_id == 24 || type_id == 25 || type_id == 26) ){
 						is_yixun_dev = true;
 						email += c.yixun_cp_dev;
-					};
+					}
+                    //京东无线
+                    if(rank_id == 16){
+                        email += c.email_jdwuxian_cc;
+                    }
 					
 					//抄送一份给设计师和前端
 					if(data.require_verify_user){
@@ -630,7 +634,7 @@ define(function(require, exports, module) {
 				localStore.getRequireDataById(require_id,function(data){
 					var today = Fun.today(),
 						obj = {
-							subject			:"【腾讯电商】" + data.cp_name +' ' + data.require_name + " 工作计划",
+							subject			:"【京东外包】" + data.cp_name +' ' + data.require_name + " 工作计划",
 							sender			:user_data.users.user_email,		//发送者
 							receiver		:receiver,		//接受者
 							cc				:'',

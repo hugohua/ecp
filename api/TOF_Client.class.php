@@ -23,7 +23,7 @@ class TOF_Client {
 
 	private function _initClient($service) {
 		$wsURL = "http://ws.tof.oa.com/".$service.".svc?wsdl";
-		$appkey = "558811cb01b746cbab939ce4fc023402";
+		$appkey = "558811cb01b746cbab939ce4fc023402";//旧APPKEY：558811cb01b746cbab939ce4fc023402;新：91c2be0c55f347b2b14608f1b320b5bb
 		$ns = "http://www.w3.org/2001/XMLSchema-instance";
 		$nsnode = "http://schemas.datacontract.org/2004/07/Tencent.OA.Framework.Context";
 
